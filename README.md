@@ -1,4 +1,4 @@
-ToasterRoaster
+Toaster Roaster
 ==============
 
 ToasterRoaster is a game developed within the course "Games & Gaming" at the cooperative state university Baden-Württemberg Karlsruhe.
