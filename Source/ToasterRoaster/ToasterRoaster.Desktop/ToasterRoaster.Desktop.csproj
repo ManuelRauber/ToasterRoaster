@@ -61,7 +61,7 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ToasterRoaster.Game.Desktop\ToasterRoaster.Game.Desktop.csproj">
+    <ProjectReference Include="..\ToasterRoaster.Game\ToasterRoaster.Game.Desktop.csproj">
       <Project>{cb7cb7d6-9b1c-4055-8c44-c909ab371c19}</Project>
       <Name>ToasterRoaster.Game.Desktop</Name>
     </ProjectReference>

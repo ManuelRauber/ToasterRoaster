@@ -157,7 +157,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ToasterRoaster.Game.WindowsPhone\ToasterRoaster.Game.WindowsPhone.csproj">
+    <ProjectReference Include="..\ToasterRoaster.Game\ToasterRoaster.Game.WindowsPhone.csproj">
       <Project>{39522D05-9790-44BE-8344-6813EBA0857A}</Project>
       <Name>ToasterRoaster.Game.WindowsPhone</Name>
     </ProjectReference>

@@ -83,13 +83,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\ToasterRoaster.Game.Desktop\Game.cs">
-      <Link>Game.cs</Link>
-    </Compile>
-    <Compile Include="..\ToasterRoaster.Game.Desktop\Scenes\MainMenuScene.cs">
-      <Link>Scenes\MainMenuScene.cs</Link>
-    </Compile>
+    <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\MainMenuScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="WaveEngineWP.Adapter">
