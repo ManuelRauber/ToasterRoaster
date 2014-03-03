@@ -10,9 +10,9 @@ namespace ToasterRoaster.Game
     {
       base.Initialize(application);
 
-      var layers = WaveServices.ScreenLayers;
-      layers.AddScene<MainMenu>();
-      layers.Apply();
+      var screenLayers = WaveServices.ScreenLayers;
+      screenLayers.AddScene<MainMenuScene>();
+      screenLayers.Apply();
     }
   }
 }

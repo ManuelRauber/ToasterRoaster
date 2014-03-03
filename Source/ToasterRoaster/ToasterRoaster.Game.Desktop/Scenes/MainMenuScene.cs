@@ -3,7 +3,7 @@ using WaveEngine.Framework;
 
 namespace ToasterRoaster.Game.Scenes
 {
-  public class MainMenu : Scene
+  public class MainMenuScene : Scene
   {
     protected override void CreateScene()
     {

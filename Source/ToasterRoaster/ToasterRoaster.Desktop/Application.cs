@@ -6,7 +6,7 @@ namespace ToasterRoaster.Desktop
 {
   public class Application : WaveEngine.Adapter.Application
   {
-    private ToasterRoaster.Game.Game _game;
+    private Game.Game _game;
 
     public Application()
     {

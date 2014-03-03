@@ -93,6 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameRenderer.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -136,51 +137,30 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BepuWP">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\BepuWP.dll</HintPath>
-    </Reference>
-    <Reference Include="FarseerWP">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\FarseerWP.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D11">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\SharpDX.Direct3D11.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\SharpDX.DXGI.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.MediaFoundation">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\SharpDX.MediaFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XAudio2">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\SharpDX.XAudio2.dll</HintPath>
-    </Reference>
     <Reference Include="WaveEngineWP.Adapter">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Adapter.dll</HintPath>
-    </Reference>
-    <Reference Include="WaveEngineWP.Analytics">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Analytics.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Adapter.dll</HintPath>
     </Reference>
     <Reference Include="WaveEngineWP.Common">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Common.dll</HintPath>
     </Reference>
     <Reference Include="WaveEngineWP.Components">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Components.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Components.dll</HintPath>
     </Reference>
     <Reference Include="WaveEngineWP.Framework">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Framework.dll</HintPath>
     </Reference>
     <Reference Include="WaveEngineWP.Materials">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Materials.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Materials.dll</HintPath>
     </Reference>
     <Reference Include="WaveEngineWP.Physics">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Physics.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\WaveEngineWP.Physics.dll</HintPath>
     </Reference>
-    <Reference Include="Zlib.Portable">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\WP\ARM\Zlib.Portable.dll</HintPath>
-    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToasterRoaster.Game.WindowsPhone\ToasterRoaster.Game.WindowsPhone.csproj">
+      <Project>{39522D05-9790-44BE-8344-6813EBA0857A}</Project>
+      <Name>ToasterRoaster.Game.WindowsPhone</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

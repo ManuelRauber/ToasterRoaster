@@ -5,9 +5,10 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Windows.Foundation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using ToasterRoaster.WindowsPhone.Resources;
+using Size = Windows.Foundation.Size;
 
 namespace ToasterRoaster.WindowsPhone
 {
@@ -18,8 +19,14 @@ namespace ToasterRoaster.WindowsPhone
     {
       InitializeComponent();
 
-      // Sample code to localize the ApplicationBar
-      //BuildLocalizedApplicationBar();
+      var media = new MediaElement();
+      DrawingSurface.Children.Add(media);
+
+      var application = new GameRenderer(new Size(App.Current.Host.Content.ActualWidth,
+        App.Current.Host.Content.ActualHeight), 100, media);
+
+      DrawingSurface.SetBackgroundContentProvider(application.ContentProvider);
+      DrawingSurface.SetBackgroundManipulationHandler(application.ManipulationHandler);
     }
 
     // Sample code for building a localized ApplicationBar
