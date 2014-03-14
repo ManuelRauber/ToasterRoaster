@@ -21,7 +21,7 @@ x64/
 *_p.c
 *.ilk
 *.meta
-*.obj
+Source/**/*.obj
 *.pch
 *.pdb
 *.pgc
@@ -89,8 +89,6 @@ csx
 AppPackages/
 
 # Others
-[Bb]in
-[Oo]bj
 sql
 TestResults
 [Tt]est[Rr]esult*
