@@ -11,7 +11,7 @@ namespace ToasterRoaster.Game
       base.Initialize(application);
 
       var screenLayers = WaveServices.ScreenLayers;
-      screenLayers.AddScene<MainMenuScene>();
+      screenLayers.AddScene<GameScene>();
       screenLayers.Apply();
     }
   }
