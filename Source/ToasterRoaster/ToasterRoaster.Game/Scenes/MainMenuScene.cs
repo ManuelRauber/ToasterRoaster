@@ -102,6 +102,8 @@ namespace ToasterRoaster.Game.Scenes
 
       button.SetGridProperties(row, 0);
 
+      button.Entity.RemoveComponent<BorderRenderer>();
+
       button.Click += clickHandler;
 
       _grid.Add(button);
