@@ -133,7 +133,7 @@ namespace ToasterRoaster.Game.Scenes
 
     private void HelpButtonClicked(object sender, EventArgs e)
     {
-      throw new NotImplementedException();
+      SceneManager.Instance.ChangeSceneTo<HelpScene>();
     }
 
     #endregion
