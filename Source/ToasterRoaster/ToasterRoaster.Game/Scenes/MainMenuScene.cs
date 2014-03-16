@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using ToasterRoaster.Game.Common;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Gestures;
 using WaveEngine.Components.UI;
@@ -59,8 +60,8 @@ namespace ToasterRoaster.Game.Scenes
         HorizontalAlignment = HorizontalAlignment.Center,
       };
 
-      textBlock.SetValue(GridControl.RowProperty, 0);
-      textBlock.SetValue(GridControl.ColumnProperty, 0);
+      textBlock.SetGridProperties(0, 0);
+
       _grid.Add(textBlock);
     }
 
@@ -99,8 +100,7 @@ namespace ToasterRoaster.Game.Scenes
         Width = 250,
       };
 
-      button.SetValue(GridControl.ColumnProperty, 0);
-      button.SetValue(GridControl.RowProperty, row);
+      button.SetGridProperties(row, 0);
 
       button.Click += clickHandler;
 
