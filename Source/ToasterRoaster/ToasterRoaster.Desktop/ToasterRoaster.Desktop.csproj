@@ -56,8 +56,8 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
-    <Content Include="Content\toaster_template.wpk">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Assets\Models\toaster_template.wpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
