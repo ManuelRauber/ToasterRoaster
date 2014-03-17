@@ -24,7 +24,13 @@ namespace ToasterRoaster.WindowsPhone
       _game.DrawFrame(elapsedTime);
     }
 
-    public override void Initialize()
+	  public override void OnSuspending()
+	  {}
+
+	  public override void OnResuming()
+	  {}
+
+	  public override void Initialize()
     {
       base.Initialize();
 
