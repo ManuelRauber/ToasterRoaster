@@ -20,13 +20,13 @@ namespace ToasterRoaster.Game.Scenes
       _layers = WaveServices.ScreenContextManager;
     }
 
-	  public void ChangeSceneTo<TScene>()
+	  public void To<TScene>()
 		  where TScene : Scene, new()
 	  {
-		  ChangeSceneTo(new TScene());
+		  To(new TScene());
 	  }
 
-    private void ChangeSceneTo(Scene scene)
+    private void To(Scene scene)
     {
 			_layers.To(new ScreenContext(scene));
 		}

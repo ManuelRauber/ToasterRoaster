@@ -12,7 +12,7 @@ namespace ToasterRoaster.Game
       base.Initialize(application);
 
       BackgroundMusicPlayer.Instance.Start();
-      SceneManager.Instance.ChangeSceneTo<MainMenuScene>();
+      SceneManager.Instance.To<MainMenuScene>();
     }
   }
 }

@@ -36,7 +36,7 @@ namespace ToasterRoaster.Game.Scenes
 
     private void BackButtonClicked(object sender, EventArgs e)
     {
-      SceneManager.Instance.ChangeSceneTo<MainMenuScene>();
+      SceneManager.Instance.To<MainMenuScene>();
     }
 
     private void CreateHelpText()

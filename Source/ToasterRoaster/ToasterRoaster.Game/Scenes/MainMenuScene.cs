@@ -135,7 +135,7 @@ namespace ToasterRoaster.Game.Scenes
 
     private void HelpButtonClicked(object sender, EventArgs e)
     {
-      SceneManager.Instance.ChangeSceneTo<HelpScene>();
+      SceneManager.Instance.To<HelpScene>();
     }
 
     #endregion
