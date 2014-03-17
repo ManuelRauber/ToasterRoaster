@@ -6,7 +6,7 @@ namespace ToasterRoaster.Game.Scenes
 {
   public class SceneManager
   {
-    private readonly ScreenLayers _layers;
+		private readonly ScreenContextManager _layers;
 
     private static readonly Lazy<SceneManager> _instance = new Lazy<SceneManager>(() => new SceneManager());
 
@@ -17,14 +17,18 @@ namespace ToasterRoaster.Game.Scenes
 
     private SceneManager()
     {
-      _layers = WaveServices.ScreenLayers;
+      _layers = WaveServices.ScreenContextManager;
     }
 
-    public void ChangeSceneTo<TScene>()
-      where TScene : Scene, new()
+	  public void ChangeSceneTo<TScene>()
+		  where TScene : Scene, new()
+	  {
+		  ChangeSceneTo(new TScene());
+	  }
+
+    private void ChangeSceneTo(Scene scene)
     {
-      _layers.AddScene<TScene>();
-      _layers.Apply();
-    }
+			_layers.To(new ScreenContext(scene));
+		}
   }
 }
