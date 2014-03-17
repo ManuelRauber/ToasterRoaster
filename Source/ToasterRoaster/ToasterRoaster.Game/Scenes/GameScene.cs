@@ -10,28 +10,37 @@ using WaveEngine.Components.Graphics3D;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics3D;
+using WaveEngine.Materials;
 
 namespace ToasterRoaster.Game.Scenes
 {
-    public class GameScene : Scene
-    {
+	public class GameScene : Scene
+	{
+		protected override void CreateScene()
+		{
+			RenderManager.BackgroundColor = Color.Black;
+			RenderManager.DebugLines = true;
 
-        protected override void CreateScene()
-        {
-            RenderManager.BackgroundColor = Color.Orange;
+			CreateCamera();
+			CreateToaster();
+		}
 
-            FreeCamera mainCamera = new FreeCamera("MainCamera", new Vector3(0, 50, 80), Vector3.Zero);
-            EntityManager.Add(mainCamera);
-            RenderManager.SetActiveCamera(mainCamera.Entity);
+		private void CreateToaster()
+		{
+			var toaster = new Entity("toaster")
+				.AddComponent(new Model("Assets/Models/toaster_template.wpk"))
+				.AddComponent(new MaterialsMap(new BasicMaterial(Color.White)))
+				.AddComponent(new Transform3D())
+				.AddComponent(new ModelRenderer());
 
-            var toaster = new Entity("toaster");
-            toaster.AddComponent(new Transform3D());
-            toaster.AddComponent(new BoxCollider());
-            toaster.AddComponent(new Model("Content/toaster_template.wpk"));
-            toaster.AddComponent(new MaterialsMap());
-            toaster.AddComponent(new ModelRenderer());
+			EntityManager.Add(toaster);
+		}
 
-            EntityManager.Add(toaster);
-        }
-    }
+		private void CreateCamera()
+		{
+			FreeCamera mainCamera = new FreeCamera("MainCamera", new Vector3(0, 50, 80), Vector3.Zero);
+			EntityManager.Add(mainCamera);
+			RenderManager.SetActiveCamera(mainCamera.Entity);
+		}
+	}
 }
