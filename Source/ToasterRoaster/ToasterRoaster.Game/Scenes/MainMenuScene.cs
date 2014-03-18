@@ -130,7 +130,7 @@ namespace ToasterRoaster.Game.Scenes
 
     private void GameStartButtonClicked(object sender, EventArgs e)
     {
-      throw new NotImplementedException();
+			SceneManager.Instance.To<GameScene>();
     }
 
     private void HelpButtonClicked(object sender, EventArgs e)
