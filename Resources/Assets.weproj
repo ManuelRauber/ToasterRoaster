@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Name="Assets" Version="1">
+  <Profiles>
+    <Profile Name="Android" Platform="Android" LowQualityCompressionFormat="ETC1RGB8" HighQualityCompressionFormat="R8G8B8A8" />
+    <Profile Name="Windows" Platform="Windows" LowQualityCompressionFormat="R8G8B8A8" HighQualityCompressionFormat="R8G8B8A8" />
+    <Profile Name="WindowsPhone" Platform="WP" LowQualityCompressionFormat="DXT1" HighQualityCompressionFormat="DXT5" />
+  </Profiles>
+  <Assets>
+    <Asset Path="Models\toaster_template.x">
+      <ExportProperties>
+        <Export SwapWindingOrder="False" GenerateCollisionInfo="False" GenerateTangentSpace="False" FullBoneWeights="False" ExportAnimations="False" HasAnimations="False" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Android" Platform="Android" Generate="True" ZipCompress="False" ExportType="WaveEngine.Components.Graphics3D.InternalStaticModel" ExportVersion="1.0.0.0" />
+        <Export SwapWindingOrder="False" GenerateCollisionInfo="False" GenerateTangentSpace="False" FullBoneWeights="False" ExportAnimations="False" HasAnimations="False" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Windows" Platform="Windows" Generate="False" ZipCompress="False" ExportType="WaveEngine.Components.Graphics3D.InternalStaticModel" ExportVersion="1.0.0.0" />
+        <Export SwapWindingOrder="False" GenerateCollisionInfo="False" GenerateTangentSpace="False" FullBoneWeights="False" ExportAnimations="False" HasAnimations="False" Profile="WaveEditor.Core.Model.PlatformProfile" Name="WindowsPhone" Platform="WP" Generate="False" ZipCompress="False" ExportType="WaveEngine.Components.Graphics3D.InternalStaticModel" ExportVersion="1.0.0.0" />
+      </ExportProperties>
+    </Asset>
+  </Assets>
+</Project>

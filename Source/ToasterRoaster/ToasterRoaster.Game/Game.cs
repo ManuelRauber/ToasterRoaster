@@ -1,4 +1,5 @@
-﻿using ToasterRoaster.Game.Scenes;
+﻿using ToasterRoaster.Game.Common;
+using ToasterRoaster.Game.Scenes;
 using WaveEngine.Common;
 using WaveEngine.Framework.Services;
 
@@ -10,9 +11,8 @@ namespace ToasterRoaster.Game
     {
       base.Initialize(application);
 
-      var screenLayers = WaveServices.ScreenLayers;
-      screenLayers.AddScene<MainMenuScene>();
-      screenLayers.Apply();
+      BackgroundMusicPlayer.Instance.Start();
+      SceneManager.Instance.To<MainMenuScene>();
     }
   }
 }

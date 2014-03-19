@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using Windows.Foundation;
 using WaveEngine.Adapter;
+using WaveEngine.Common.Input;
 
 namespace ToasterRoaster.WindowsPhone
 {
@@ -9,7 +10,7 @@ namespace ToasterRoaster.WindowsPhone
   {
     private Game.Game _game;
 
-    public GameRenderer(Size windowBounds, int scaleFactor, MediaElement mediaElement) 
+    public GameRenderer(Size windowBounds, int scaleFactor, MediaElement mediaElement)
       : base(windowBounds, scaleFactor, mediaElement)
     {}
 
@@ -23,9 +24,18 @@ namespace ToasterRoaster.WindowsPhone
       _game.DrawFrame(elapsedTime);
     }
 
-    public override void Initialize()
+	  public override void OnSuspending()
+	  {}
+
+	  public override void OnResuming()
+	  {}
+
+	  public override void Initialize()
     {
       base.Initialize();
+
+      Adapter.DefaultOrientation = DisplayOrientation.Portrait;
+      Adapter.SupportedOrientations = DisplayOrientation.Portrait;
 
       _game = new Game.Game();
       _game.Initialize(this);
