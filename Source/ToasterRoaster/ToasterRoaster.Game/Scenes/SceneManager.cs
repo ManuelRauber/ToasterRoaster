@@ -1,4 +1,5 @@
 ﻿using System;
+using WaveEngine.Components.Transitions;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
 
@@ -28,7 +29,7 @@ namespace ToasterRoaster.Game.Scenes
 
     private void To(Scene scene)
     {
-			_layers.To(new ScreenContext(scene));
+			_layers.To(new ScreenContext(scene), new FanTransition(TimeSpan.FromSeconds(1)));
 		}
   }
 }
