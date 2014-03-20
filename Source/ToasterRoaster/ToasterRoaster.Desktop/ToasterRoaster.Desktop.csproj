@@ -59,6 +59,12 @@
     <Content Include="Assets\Models\toaster_template.wpk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Models\toaster_template_uv_fbx.wpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Textures\toaster_red.wpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToasterRoaster.Game\ToasterRoaster.Game.Desktop.csproj">

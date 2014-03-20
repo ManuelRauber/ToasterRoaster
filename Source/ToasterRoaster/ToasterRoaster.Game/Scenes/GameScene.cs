@@ -28,8 +28,8 @@ namespace ToasterRoaster.Game.Scenes
 		private void CreateToaster()
 		{
 			var toaster = new Entity("toaster")
-				.AddComponent(new Model("Assets/Models/toaster_template.wpk"))
-				.AddComponent(new MaterialsMap(new BasicMaterial(Color.White)))
+				.AddComponent(new SkinnedModel("Assets/Models/toaster_template_uv_fbx.wpk"))
+				.AddComponent(new MaterialsMap(new BasicMaterial("Assets/Textures/toaster_red.wpk") { ReferenceAlpha = 0.5f}))
 				.AddComponent(new Transform3D())
 				.AddComponent(new ModelRenderer());
 
