@@ -18,27 +18,47 @@ namespace ToasterRoaster.Game.Scenes
 	{
 		protected override void CreateScene()
 		{
-			RenderManager.BackgroundColor = Color.Black;
+			RenderManager.BackgroundColor = Color.Green;
 			RenderManager.DebugLines = true;
 
+            CreateLight();
 			CreateCamera();
 			CreateToaster();
+            //CreatePlate();
 		}
+
+        private void CreatePlate()
+        {
+            var plate = new Entity("plate")
+                .AddComponent(new Model("Assets/Models/teller_firsttry.wpk"))
+                .AddComponent(new MaterialsMap(new BasicMaterial("Assets/Textures/Plate.wpk") { LightingEnabled = true, DiffuseColor = Color.White,}))
+                .AddComponent(new Transform3D())
+                .AddComponent(new ModelRenderer());
+
+            EntityManager.Add(plate);
+        }
+
+        private void CreateLight()
+        {
+            DirectionalLight skylight = new DirectionalLight("SkyLight", new Vector3(20));
+            skylight.Color = Color.White;
+            EntityManager.Add(skylight);
+        }
 
 		private void CreateToaster()
 		{
-			var toaster = new Entity("toaster")
-				.AddComponent(new Model("Assets/Models/toaster_template.wpk"))
-				.AddComponent(new MaterialsMap(new BasicMaterial(Color.White)))
-				.AddComponent(new Transform3D())
-				.AddComponent(new ModelRenderer());
+            var toaster = new Entity("toaster")
+                .AddComponent(new Model("Assets/Models/toaster_template_uv_fbx.wpk"))
+                .AddComponent(new MaterialsMap(new BasicMaterial("Assets/Textures/toaster_red.wpk") { LightingEnabled = true, }))
+                .AddComponent(new Transform3D() { Scale = new Vector3(1.5f, 1, 0.67f), })
+                .AddComponent(new ModelRenderer());
 
 			EntityManager.Add(toaster);
 		}
 
 		private void CreateCamera()
 		{
-			FreeCamera mainCamera = new FreeCamera("MainCamera", new Vector3(0, 50, 80), Vector3.Zero);
+			FreeCamera mainCamera = new FreeCamera("MainCamera", new Vector3(0, 15, 25), Vector3.Zero);
 			EntityManager.Add(mainCamera);
 			RenderManager.SetActiveCamera(mainCamera.Entity);
 		}
