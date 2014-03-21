@@ -1,0 +1,59 @@
+#My first suggestion:
+private int getComparisonRate(Bitmap bmp1, Bitmap bmp2) 
+{
+	int equalCount = 0;
+    if (bmp1.Size == bmp2.Size)
+    {
+        for (int x = 0; x < bmp1.Width; ++x)
+        {
+            for (int y = 0; y < bmp1.Height; ++y)
+            {
+                if (bmp1.GetPixel(x, y) == bmp2.GetPixel(x, y))
+                {
+                    equalCount++;
+                }
+            }
+        }
+    }
+    else
+    {
+        //fatal error exception, pictures have no equal sizes (different width or height in pixel)
+    }
+    return equalCount/bmp1.Size;
+}
+
+
+#After searching the web, it appears that GetPixel is maybe slow. So I found this approach:
+private int getComparisonRate(Bitmap bmp1, Bitmap bmp2) 
+{
+	int equalCount = 0;
+    if (bmp1.Size == bmp2.Size)
+    {
+		Rectangle rect = new Rectangle(0, 0, bmp1.Width, bmp1.Height);
+		BitmapData bmpData1 = bmp1.LockBits(rect, ImageLockMode.ReadOnly, bmp1.PixelFormat);
+		BitmapData bmpData2 = bmp2.LockBits(rect, ImageLockMode.ReadOnly, bmp2.PixelFormat);
+		unsafe {
+		  byte* ptr1 = (byte*)bmpData1.Scan0.ToPointer();
+		  byte* ptr2 = (byte*)bmpData2.Scan0.ToPointer();
+		  int width = rect.Width * 3; // for 24bpp pixel data
+		  for (int y = 0; equals && y < rect.Height; y++) {
+			for (int x = 0; x < width; x++) {
+			  if (*ptr1 == *ptr2) {
+				equalCount++;
+			  }
+			  ptr1++;
+			  ptr2++;
+			}
+			ptr1 += bmpData1.Stride - width;
+			ptr2 += bmpData2.Stride - width;
+		  }
+		}
+		bmp1.UnlockBits(bmpData1);
+		bmp2.UnlockBits(bmpData2);
+    }
+    else
+    {
+        //fatal error exception, pictures have no equal sizes (different width or height in pixel)
+    }
+    return equalCount/bmp1.Size;
+}
