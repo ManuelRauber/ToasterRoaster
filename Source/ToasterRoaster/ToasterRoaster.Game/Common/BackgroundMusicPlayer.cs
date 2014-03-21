@@ -7,55 +7,57 @@ using WaveEngine.Framework.Services;
 
 namespace ToasterRoaster.Game.Common
 {
-  public class BackgroundMusicPlayer
-  {
-    private static readonly Lazy<BackgroundMusicPlayer> _instance = new Lazy<BackgroundMusicPlayer>(() => new BackgroundMusicPlayer());
-    private IList<MusicInfo> _musicList;
-    private int _indexLastPlayed = -1;
+	public class BackgroundMusicPlayer
+	{
+		private static readonly Lazy<BackgroundMusicPlayer> _instance =
+			new Lazy<BackgroundMusicPlayer>(() => new BackgroundMusicPlayer());
 
-    public static BackgroundMusicPlayer Instance
-    {
-      get { return _instance.Value; }
-    }
+		private IList<MusicInfo> _musicList;
+		private int _indexLastPlayed = -1;
 
-    private BackgroundMusicPlayer()
-    {
-      PreloadBackgroundMusic();
-      WaveServices.MusicPlayer.OnSongCompleted += MusicPlayerSongCompleted;
-    }
+		public static BackgroundMusicPlayer Instance
+		{
+			get { return _instance.Value; }
+		}
 
-    private void MusicPlayerSongCompleted(object sender, EventArgs e)
-    {
-      WaveServices.MusicPlayer.Play(GetNextTitle());
-    }
+		private BackgroundMusicPlayer()
+		{
+			PreloadBackgroundMusic();
+			WaveServices.MusicPlayer.OnSongCompleted += MusicPlayerSongCompleted;
+		}
 
-    private void PreloadBackgroundMusic()
-    {
-      _musicList = new List<MusicInfo>()
-      {
-        new MusicInfo("Assets/Music/BushwickTarantella.mp3"),
-        new MusicInfo("Assets/Music/FunInABottle.mp3"),
-        new MusicInfo("Assets/Music/GaslampFunworks.mp3"),
-        new MusicInfo("Assets/Music/MonkeysSpinningMonkeys.mp3"),
-      };
-    }
+		private void MusicPlayerSongCompleted(object sender, EventArgs e)
+		{
+			WaveServices.MusicPlayer.Play(GetNextTitle());
+		}
 
-    private MusicInfo GetNextTitle()
-    {
-      int random;
+		private void PreloadBackgroundMusic()
+		{
+			_musicList = new List<MusicInfo>()
+			{
+				new MusicInfo("Assets/Music/BushwickTarantella.mp3"),
+				new MusicInfo("Assets/Music/FunInABottle.mp3"),
+				new MusicInfo("Assets/Music/GaslampFunworks.mp3"),
+				new MusicInfo("Assets/Music/MonkeysSpinningMonkeys.mp3"),
+			};
+		}
 
-      do
-      {
-        random = WaveServices.Random.Next(0, _musicList.Count);
-      } while (random == _indexLastPlayed);
+		private MusicInfo GetNextTitle()
+		{
+			int random;
 
-      _indexLastPlayed = random;
-      return _musicList[random];
-    }
+			do
+			{
+				random = WaveServices.Random.Next(0, _musicList.Count);
+			} while (random == _indexLastPlayed);
 
-    public void Start()
-    {
-     WaveServices.MusicPlayer.Play(GetNextTitle()); 
-    }
-  }
+			_indexLastPlayed = random;
+			return _musicList[random];
+		}
+
+		public void Start()
+		{
+			WaveServices.MusicPlayer.Play(GetNextTitle());
+		}
+	}
 }
