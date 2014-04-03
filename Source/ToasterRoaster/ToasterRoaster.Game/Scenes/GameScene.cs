@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ToasterRoaster.Game.Behaviors;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Math;
+using WaveEngine.Components.Animation;
 using WaveEngine.Components.Cameras;
 using WaveEngine.Components.Gestures;
 using WaveEngine.Components.Graphics3D;
@@ -21,6 +22,8 @@ namespace ToasterRoaster.Game.Scenes
 {
     public class GameScene : Scene
     {
+        private bool _started = false;
+
         protected override void CreateScene()
         {
             RenderManager.BackgroundColor = Color.Green;
@@ -32,13 +35,6 @@ namespace ToasterRoaster.Game.Scenes
                 Margin = new Thickness(20f),
             };
             EntityManager.Add(toasterPosition);
-
-            var cube = new Entity("cube")
-                .AddComponent(Model.CreateCube())
-                .AddComponent(new MaterialsMap(new BasicMaterial(Color.White)))
-                .AddComponent(new Transform3D())
-                .AddComponent(new ModelRenderer());
-            EntityManager.Add(cube);
 
             CreateLight();
             CreateCamera();
@@ -67,10 +63,11 @@ namespace ToasterRoaster.Game.Scenes
         private void CreateToaster()
         {
             var toaster = new Entity("toaster")
-                .AddComponent(new Model("Assets/Models/toaster_template_uv_fbx.wpk"))
+                .AddComponent(new SkinnedModel("Assets/Animation/toaster_template_animation_uv_fbx.wpk"))
                 .AddComponent(new MaterialsMap(new BasicMaterial("Assets/Textures/toaster_red.wpk") { LightingEnabled = true, }))
                 .AddComponent(new Transform3D() { Scale = new Vector3(1.5f, 1, 0.67f), })
-                .AddComponent(new ModelRenderer())
+                .AddComponent(new Animation3D("Assets/Animation/toaster_template_animation_uv_fbx_animation.wpk"))
+                .AddComponent(new SkinnedModelRenderer())
                 .AddComponent(new ToasterBehavior())
                 .AddComponent(new Transform2D())
                 .AddComponent(new RectangleCollider())
@@ -79,6 +76,9 @@ namespace ToasterRoaster.Game.Scenes
             toaster.FindComponent<TouchGestures>().TouchPressed += new EventHandler<GestureEventArgs>(StartGame);
 
             EntityManager.Add(toaster);
+
+            Animation3D anim = toaster.FindComponent<Animation3D>();
+            anim.PlayAnimation("StartRoast", true);
         }
 
         private void CreateCamera()
@@ -90,7 +90,39 @@ namespace ToasterRoaster.Game.Scenes
         }
         private void StartGame(object sender, GestureEventArgs e)
         {
+            if (_started)
+            {
+                return;
+            }
+
+            _started = true;
+
             EntityManager.Find<TextBlock>("ToasterPosition").Text = "Start";
+
+            Entity toast = new Entity("toast")
+                .AddComponent(new Transform3D())
+                .AddComponent(Model.CreatePlane(Vector3.UnitZ, 5))
+                .AddComponent(new MaterialsMap(new BasicMaterial(Color.Gold)))
+                .AddComponent(new ModelRenderer())
+                .AddComponent(new Transform2D())
+                .AddComponent(new RectangleCollider())
+                .AddComponent(new TouchGestures());
+
+            toast.FindComponent<TouchGestures>().TouchPressed += new EventHandler<GestureEventArgs>(DrawOnToast);
+
+            EntityManager.Add(toast);
+            
+            ThirdPersonCamera camera = new ThirdPersonCamera("ToasterCamera", toast);
+            EntityManager.Add(camera);
+            camera.Entity.AddComponent(new ToastBehavior(toast));
+            RenderManager.SetActiveCamera(camera.Entity);
+        }
+
+        private void DrawOnToast(object sender, GestureEventArgs e)
+        {
+            Entity toast = sender as Entity;
+            MaterialsMap materialsMap = toast.FindComponent<MaterialsMap>();
+            
         }
     }
 }

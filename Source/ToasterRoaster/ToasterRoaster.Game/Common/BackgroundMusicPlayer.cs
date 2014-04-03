@@ -28,7 +28,7 @@ namespace ToasterRoaster.Game.Common
 
 		private void MusicPlayerSongCompleted(object sender, EventArgs e)
 		{
-			WaveServices.MusicPlayer.Play(GetNextTitle());
+            WaveServices.MusicPlayer.Play(GetNextTitle());
 		}
 
 		private void PreloadBackgroundMusic()
@@ -57,7 +57,7 @@ namespace ToasterRoaster.Game.Common
 
 		public void Start()
 		{
-			WaveServices.MusicPlayer.Play(GetNextTitle());
+            //WaveServices.MusicPlayer.Play(GetNextTitle());
 		}
 	}
 }

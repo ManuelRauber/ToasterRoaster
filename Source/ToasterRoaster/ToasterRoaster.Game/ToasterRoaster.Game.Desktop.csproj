@@ -42,6 +42,7 @@
     <Compile Include="Scenes\HelpScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
+    <Compile Include="Behaviors\ToastBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="WaveEngine.Adapter">
