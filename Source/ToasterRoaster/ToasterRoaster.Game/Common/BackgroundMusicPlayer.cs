@@ -22,13 +22,25 @@ namespace ToasterRoaster.Game.Common
 
 		private BackgroundMusicPlayer()
 		{
+			Configuration.Instance.OnConfigurationChanged += ConfigurationChanged;
 			PreloadBackgroundMusic();
 			WaveServices.MusicPlayer.OnSongCompleted += MusicPlayerSongCompleted;
 		}
 
+		private void ConfigurationChanged()
+		{
+			WaveServices.MusicPlayer.MusicEnabled = Configuration.Instance.IsMusicEnabled;
+			WaveServices.MusicPlayer.Volume = Configuration.Instance.MusicVolume;
+		}
+
 		private void MusicPlayerSongCompleted(object sender, EventArgs e)
 		{
-            WaveServices.MusicPlayer.Play(GetNextTitle());
+			if (!Configuration.Instance.IsMusicEnabled)
+			{
+				return;
+			}
+
+			WaveServices.MusicPlayer.Play(GetNextTitle());
 		}
 
 		private void PreloadBackgroundMusic()
@@ -57,7 +69,12 @@ namespace ToasterRoaster.Game.Common
 
 		public void Start()
 		{
-            //WaveServices.MusicPlayer.Play(GetNextTitle());
+			if (!Configuration.Instance.IsMusicEnabled)
+			{
+				return;
+			}
+
+			WaveServices.MusicPlayer.Play(GetNextTitle());
 		}
 	}
 }
