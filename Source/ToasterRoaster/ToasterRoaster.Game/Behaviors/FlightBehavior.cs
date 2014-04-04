@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WaveEngine.Common.Math;
 using WaveEngine.Components.Cameras;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
+using WaveEngine.Framework.Physics2D;
+using WaveEngine.Framework.Physics3D;
 using WaveEngine.Framework.Services;
 
 namespace ToasterRoaster.Game.Scenes
@@ -33,6 +36,10 @@ namespace ToasterRoaster.Game.Scenes
 
         protected override void Update(TimeSpan gameTime)
         {
+
+            //RigidBody3D rigidBody = this.Owner.FindComponent<RigidBody3D>();
+            //rigidBody.ApplyLinearImpulse(SPEED * Vector3.UnitY);
+
             if (_height >= 0)
             {
                 _elapsedTime += gameTime.TotalSeconds;

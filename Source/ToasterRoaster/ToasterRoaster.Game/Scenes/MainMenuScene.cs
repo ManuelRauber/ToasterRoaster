@@ -130,7 +130,7 @@ namespace ToasterRoaster.Game.Scenes
 
     private void GameStartButtonClicked(object sender, EventArgs e)
     {
-			SceneManager.Instance.To<GameScene>();
+			SceneManager.Instance.To<PreGameScene>();
     }
 
     private void HelpButtonClicked(object sender, EventArgs e)

@@ -80,6 +80,9 @@
     <Content Include="Assets\Textures\toast.wpk">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Textures\toast_2D.wpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToasterRoaster.Game\ToasterRoaster.Game.Desktop.csproj">

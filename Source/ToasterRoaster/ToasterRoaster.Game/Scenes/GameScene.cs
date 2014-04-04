@@ -29,7 +29,7 @@ namespace ToasterRoaster.Game.Scenes
         protected override void CreateScene()
         {
             RenderManager.BackgroundColor = Color.Green;
-            RenderManager.DebugLines = true;
+            //RenderManager.DebugLines = true;
 
             TextBlock toasterPosition = new TextBlock("ToasterPosition")
             {
@@ -101,24 +101,27 @@ namespace ToasterRoaster.Game.Scenes
 
             EntityManager.Find<TextBlock>("ToasterPosition").Text = "Start";
 
+            float size = 280f;
+
             Entity toast = new Entity("toast")
-                .AddComponent(new Sprite("Assets/Textures/toast.wpk"))
+                .AddComponent(new Sprite("Assets/Textures/toast_2D.wpk"))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
+                          .AddComponent(new RectangleCollider())
                 .AddComponent(new Transform2D()
                 {
-                    Opacity = 1,
-                    X = WaveServices.Platform.ScreenWidth / 3,
-                    Y = WaveServices.Platform.ScreenHeight / 3,
-                    XScale = 280f / 1024f,
-                    YScale = 280f / 1024f,
-                    DrawOrder = 0.05f,
+                    //Opacity = 1,
+                    X = (WaveServices.Platform.ScreenWidth - size) / 2,
+                    Y = (WaveServices.Platform.ScreenHeight - size) / 2,
+                    XScale = size / 500f,
+                    YScale = size / 500f,
+                    //DrawOrder = 0.05f,
                 })
-                .AddComponent(new RectangleCollider())
                 .AddComponent(new ToastBehavior());
 
             EntityManager.Add(toast);
 
             EntityManager.Find<FixedCamera>("MainCamera").Entity.AddComponent(new FlightBehavior(toast));
+            //EntityManager.Find<FixedCamera>("MainCamera").Entity.AddComponent(new RigidBody3D() { IsKinematic = true, });
         }
     }
 }
