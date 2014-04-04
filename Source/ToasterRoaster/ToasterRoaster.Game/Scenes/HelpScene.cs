@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ToasterRoaster.Game.Common;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
@@ -13,6 +14,8 @@ namespace ToasterRoaster.Game.Scenes
 
     protected override void CreateScene()
     {
+	  //  RenderManager.DebugLines = true;
+
       CreateGrid();
       CreateHeader();
       CreateHelpText();
@@ -25,6 +28,8 @@ namespace ToasterRoaster.Game.Scenes
       {
         Text = "Back to main menu",
         Margin = new Thickness(0, 40, 0, 0),
+				Width = 250,
+				HorizontalAlignment = HorizontalAlignment.Center,
       };
 
       button.SetGridProperties(2, 0);
@@ -43,10 +48,11 @@ namespace ToasterRoaster.Game.Scenes
     {
       var textBlock = new TextBlock()
       {
-        TextWrapping = false,
+        TextWrapping = true,
         Margin = new Thickness(0, 40, 0, 0),
         Text = "Helptext not defined right now. I'm just a placeholder. :-)",
-        HorizontalAlignment = HorizontalAlignment.Left,
+				TextAlignment = TextAlignment.Left,
+				Width = 500,
       };
 
       textBlock.SetGridProperties(1, 0);
@@ -59,7 +65,8 @@ namespace ToasterRoaster.Game.Scenes
       var textBlock = new TextBlock()
       {
         Text = "ToasterRoaster - Help",
-        HorizontalAlignment = HorizontalAlignment.Center,
+				TextAlignment = TextAlignment.Center,
+				HorizontalAlignment = HorizontalAlignment.Center,
       };
 
       textBlock.SetGridProperties(0, 0);
@@ -71,14 +78,14 @@ namespace ToasterRoaster.Game.Scenes
     {
       _grid = new Grid()
       {
-        HorizontalAlignment = HorizontalAlignment.Center,
-        VerticalAlignment = VerticalAlignment.Stretch,
+				Width = 500, 
+				HorizontalAlignment = HorizontalAlignment.Center,
       };
 
-      _grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
-      _grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
-      _grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
-      _grid.ColumnDefinitions.Add(new ColumnDefinition());
+      _grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Proportional) });
+			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Proportional) });
+			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Proportional) });
+      _grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Proportional) });
 
       EntityManager.Add(_grid);
     }
