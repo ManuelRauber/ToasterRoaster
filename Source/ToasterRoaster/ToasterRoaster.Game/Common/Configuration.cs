@@ -25,7 +25,7 @@ namespace ToasterRoaster.Game.Common
 
 		private const string CONFIGURATION_FILE_NAME = "Config.conf";
 		private readonly Storage _storage;
-		private static Lazy<Configuration> _instance = new Lazy<Configuration>(() => new Configuration());
+		private readonly static Lazy<Configuration> _instance = new Lazy<Configuration>(() => new Configuration());
 		private ConfigurationObject _configurationObject;
 
 		public event ConfigurationChangedHandler OnConfigurationChanged;
