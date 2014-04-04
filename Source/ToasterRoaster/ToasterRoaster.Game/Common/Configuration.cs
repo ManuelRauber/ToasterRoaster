@@ -11,7 +11,7 @@ namespace ToasterRoaster.Game.Common
 		private class ConfigurationObject
 		{
 			[DataMember]
-			public bool IsMusicEnabled = false;
+			public bool IsMusicEnabled = true;
 
 			[DataMember]
 			public int MusicVolume = 100;
