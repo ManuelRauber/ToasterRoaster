@@ -36,6 +36,7 @@
     <Compile Include="Behaviors\ToastBehavior.cs" />
     <Compile Include="Behaviors\ToasterBehavior.cs" />
     <Compile Include="Common\BackgroundMusicPlayer.cs" />
+    <Compile Include="Common\Configuration.cs" />
     <Compile Include="Common\UIExtensions.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
