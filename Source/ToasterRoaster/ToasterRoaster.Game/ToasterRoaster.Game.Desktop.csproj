@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\ToastBehavior.cs" />
     <Compile Include="Behaviors\ToasterBehavior.cs" />
     <Compile Include="Common\BackgroundMusicPlayer.cs" />
     <Compile Include="Common\UIExtensions.cs" />
@@ -42,7 +43,7 @@
     <Compile Include="Scenes\HelpScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
-    <Compile Include="Behaviors\ToastBehavior.cs" />
+    <Compile Include="Behaviors\FlightBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="WaveEngine.Adapter">
@@ -83,6 +84,9 @@
     <Content Include="Assets\Music\MonkeysSpinningMonkeys.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

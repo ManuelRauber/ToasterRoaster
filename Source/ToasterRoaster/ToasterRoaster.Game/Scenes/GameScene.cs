@@ -9,12 +9,14 @@ using WaveEngine.Common.Math;
 using WaveEngine.Components.Animation;
 using WaveEngine.Components.Cameras;
 using WaveEngine.Components.Gestures;
+using WaveEngine.Components.Graphics2D;
 using WaveEngine.Components.Graphics3D;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Physics2D;
 using WaveEngine.Framework.Physics3D;
+using WaveEngine.Framework.Services;
 using WaveEngine.Framework.UI;
 using WaveEngine.Materials;
 
@@ -83,8 +85,8 @@ namespace ToasterRoaster.Game.Scenes
 
         private void CreateCamera()
         {
-            //FixedCamera mainCamera = new FixedCamera("MainCamera", new Vector3(0, 15, 25), Vector3.Zero);
-            FreeCamera mainCamera = new FreeCamera("MainCamera", new Vector3(0, 15, 25), Vector3.Zero);
+            FixedCamera mainCamera = new FixedCamera("MainCamera", new Vector3(0, 15, 25), Vector3.Zero);
+            //FreeCamera mainCamera = new FreeCamera("MainCamera", new Vector3(0, 15, 25), Vector3.Zero);
             EntityManager.Add(mainCamera);
             RenderManager.SetActiveCamera(mainCamera.Entity);
         }
@@ -100,29 +102,23 @@ namespace ToasterRoaster.Game.Scenes
             EntityManager.Find<TextBlock>("ToasterPosition").Text = "Start";
 
             Entity toast = new Entity("toast")
-                .AddComponent(new Transform3D())
-                .AddComponent(Model.CreatePlane(Vector3.UnitZ, 5))
-                .AddComponent(new MaterialsMap(new BasicMaterial(Color.Gold)))
-                .AddComponent(new ModelRenderer())
-                .AddComponent(new Transform2D())
+                .AddComponent(new Sprite("Assets/Textures/toast.wpk"))
+                .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
+                .AddComponent(new Transform2D()
+                {
+                    Opacity = 1,
+                    X = WaveServices.Platform.ScreenWidth / 3,
+                    Y = WaveServices.Platform.ScreenHeight / 3,
+                    XScale = 280f / 1024f,
+                    YScale = 280f / 1024f,
+                    DrawOrder = 0.05f,
+                })
                 .AddComponent(new RectangleCollider())
-                .AddComponent(new TouchGestures());
-
-            toast.FindComponent<TouchGestures>().TouchPressed += new EventHandler<GestureEventArgs>(DrawOnToast);
+                .AddComponent(new ToastBehavior());
 
             EntityManager.Add(toast);
-            
-            ThirdPersonCamera camera = new ThirdPersonCamera("ToasterCamera", toast);
-            EntityManager.Add(camera);
-            camera.Entity.AddComponent(new ToastBehavior(toast));
-            RenderManager.SetActiveCamera(camera.Entity);
-        }
 
-        private void DrawOnToast(object sender, GestureEventArgs e)
-        {
-            Entity toast = sender as Entity;
-            MaterialsMap materialsMap = toast.FindComponent<MaterialsMap>();
-            
+            EntityManager.Find<FixedCamera>("MainCamera").Entity.AddComponent(new FlightBehavior(toast));
         }
     }
 }
