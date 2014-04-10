@@ -37,17 +37,20 @@
     <Compile Include="Behaviors\ToastBehavior.cs" />
     <Compile Include="Behaviors\ToasterBehavior.cs" />
     <Compile Include="Common\BackgroundMusicPlayer.cs" />
+    <Compile Include="Common\BoardComparer.cs" />
     <Compile Include="Common\BoolToTextureConverter.cs" />
     <Compile Include="Common\Configuration.cs" />
     <Compile Include="Common\UIExtensions.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\EvaluationScene.cs" />
     <Compile Include="Scenes\GameScene.cs" />
     <Compile Include="Scenes\HelpScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="Scenes\PreGameScene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Behaviors\FlightBehavior.cs" />
+    <Compile Include="Services\TextureMapService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="WaveEngine.Adapter">

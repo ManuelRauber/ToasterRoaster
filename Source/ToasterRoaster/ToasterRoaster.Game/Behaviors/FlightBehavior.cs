@@ -49,7 +49,8 @@ namespace ToasterRoaster.Game.Scenes
             }
             else
             {
-                Reset();
+                //Reset();
+                SceneManager.Instance.To<EvaluationScene>();
             }
 
 

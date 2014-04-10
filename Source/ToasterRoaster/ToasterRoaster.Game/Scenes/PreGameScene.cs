@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToasterRoaster.Game.Behaviors;
 using ToasterRoaster.Game.Common;
+using ToasterRoaster.Game.Services;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics2D;
 using WaveEngine.Components.UI;
@@ -31,9 +32,11 @@ namespace ToasterRoaster.Game.Scenes
             EntityManager.Add(infoText);
 
             //Add Picture here
+            WaveServices.GetService<TextureMapService>().GivenTexture = new bool[280, 280];
+
             float size = 280;
             Entity previewModel = new Entity("previewModel")
-                .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(new bool[100, 100], this.RenderManager)))
+                .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(new bool[280, 280], this.RenderManager)))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new Transform2D()
                 {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToasterRoaster.Game.Common;
+using ToasterRoaster.Game.Services;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Math;
 using WaveEngine.Components.Graphics2D;
@@ -61,9 +62,10 @@ namespace ToasterRoaster.Game.Behaviors
                     Entity toast = EntityManager.Find<Entity>("toast");
                     toast.RemoveComponent<Sprite>();
                     toast.AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(_drawMatrix, this.RenderManager)));
-                    Sprite.Texture.TextureHandle = 173;
                     Transform2D.XScale = 1;
                     Transform2D.YScale = 1;
+
+                    WaveServices.GetService<TextureMapService>().DrawnTexture = _drawMatrix;
                 }
             }
         }
