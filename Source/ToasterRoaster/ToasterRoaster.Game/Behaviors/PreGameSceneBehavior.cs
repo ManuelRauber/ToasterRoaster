@@ -33,6 +33,7 @@ namespace ToasterRoaster.Game.Behaviors
             {
                 WaveServices.TimerFactory.RemoveTimer("Init");
                 SceneManager.Instance.To<GameScene>();
+                this.IsActive = false;
             }
         }
 

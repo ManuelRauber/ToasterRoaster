@@ -51,6 +51,7 @@ namespace ToasterRoaster.Game.Scenes
             {
                 //Reset();
                 SceneManager.Instance.To<EvaluationScene>();
+                this.IsActive = false;
             }
 
 
