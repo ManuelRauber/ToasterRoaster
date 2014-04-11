@@ -47,7 +47,7 @@ namespace ToasterRoaster.Game.Scenes
 
             var nextLevelButton = new Button()
             {
-                Text = "Nächtes Level",
+                Text = "Nächstes Level",
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 Margin = new Thickness(0, 100, 0, 0),
