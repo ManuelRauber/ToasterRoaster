@@ -48,6 +48,7 @@
     <Compile Include="Scenes\HelpScene.cs" />
     <Compile Include="Scenes\MainMenuScene.cs" />
     <Compile Include="Scenes\PreGameScene.cs" />
+    <Compile Include="Scenes\OptionsScene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Behaviors\FlightBehavior.cs" />
     <Compile Include="Services\TextureMapService.cs" />
