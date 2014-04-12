@@ -114,6 +114,8 @@ namespace ToasterRoaster.Game.Scenes
             RigidBody3D rigidBody = toastModel.FindComponent<RigidBody3D>();
             rigidBody.ResetPosition(Vector3.Zero);
             rigidBody.ApplyLinearImpulse(25 * Vector3.UnitY);
+
+            WaveServices.Input.TouchPanelState.Clear();
             
             EntityManager.Find<FixedCamera>("MainCamera").Entity.AddComponent(new FlightBehavior(toastModel));
             //EntityManager.Find<FixedCamera>("MainCamera").Entity.AddComponent(new RigidBody3D() { IsKinematic = true, });
