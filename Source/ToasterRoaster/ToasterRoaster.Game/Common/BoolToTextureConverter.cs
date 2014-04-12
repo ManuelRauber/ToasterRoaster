@@ -16,9 +16,6 @@ namespace ToasterRoaster.Game.Common
             // get total locked pixels count
             int pixelCount = drawMatrix.Length;
 
-            // Create rectangle to lock
-            Rectangle rect = new Rectangle(0, 0, drawMatrix.GetLength(0), drawMatrix.GetLength(1));
-
             //declare an array to hold the bytes of the bitmap
             byte[] pixels = new byte[pixelCount * 4];
 
@@ -29,9 +26,6 @@ namespace ToasterRoaster.Game.Common
 
                 if (drawMatrix[i / drawMatrix.GetLength(0), i % drawMatrix.GetLength(1)])
                 {
-                    pixels[4 * i] = Byte.MaxValue;
-                    pixels[4 * i + 1] = Byte.MaxValue;
-                    pixels[4 * i + 2] = Byte.MaxValue;
                     pixels[4 * i + 3] = Byte.MaxValue;
                 }
             }
@@ -56,6 +50,29 @@ namespace ToasterRoaster.Game.Common
             RenderManager.GraphicsDevice.Textures.UploadTexture(tex2D);
 
             return tex2D;
+        }
+
+        public static bool[,] ScaleTexture(bool[,] texture, int width, int height)
+        {
+            bool[,] newTexture = new bool[width, height];
+
+            for (int textureX = 0; textureX < texture.GetLength(0); textureX++)
+            {
+                for (int textureY = 0; textureY < texture.GetLength(1); textureY++)
+                {
+                    int startX = width / texture.GetLength(0) * textureX;
+                    int startY = height / texture.GetLength(1) * textureY;
+                    for (int newTextureX = startX; newTextureX < startX + width / texture.GetLength(0); newTextureX++)
+                    {
+                        for (int newTextureY = startY; newTextureY < startY + height / texture.GetLength(1); newTextureY++)
+                        {
+                            newTexture[newTextureX, newTextureY] = texture[textureX, textureY];
+                        }
+                    }
+                }
+            }
+
+            return newTexture;
         }
     }
 }

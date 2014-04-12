@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToasterRoaster.Game.Behaviors;
+using ToasterRoaster.Game.Scenes;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
 using WaveEngine.Common.Graphics;
@@ -13,6 +13,8 @@ using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.UI;
+using ToasterRoaster.Game.Behaviors;
+using WaveEngine.Common.Math;
 
 namespace ToasterRoaster.Game.Scenes
 {
@@ -32,19 +34,46 @@ namespace ToasterRoaster.Game.Scenes
             EntityManager.Add(infoText);
 
             //Add Picture here
-            WaveServices.GetService<TextureMapService>().GivenTexture = new bool[280, 280];
+            bool[,] texture = new bool[,]
+                {
+                    {true, false, false, false, true},
+                    {false, false, true, false, false},
+                    {false, true, false, true, false},
+                    {false, false, true, false, false},
+                    {true, false, false, false, true},
+                };
 
-            float size = 280;
-            Entity previewModel = new Entity("previewModel")
-                .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(new bool[280, 280], this.RenderManager)))
+            WaveServices.GetService<TextureMapService>().GivenTexture = texture;
+
+            bool[,] scaledTexture = BoolToTextureConverter.ScaleTexture(texture, 100, 100);
+
+            Entity previewToast = new Entity("previewToast")
+                .AddComponent(new Sprite("Assets/Textures/toast_2D.wpk"))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new Transform2D()
                 {
                     Opacity = 1,
-                    X = (WaveServices.Platform.ScreenWidth - size) / 2,
-                    Y = (WaveServices.Platform.ScreenHeight - size) / 2,
-                    DrawOrder = 0.05f,
+                    X = WaveServices.Platform.ScreenWidth / 2,
+                    Y = WaveServices.Platform.ScreenHeight / 2,
+                    DrawOrder = 0.1f,
+                    XScale = 0.2f,
+                    YScale = 0.2f,
+                    Origin = Vector2.Center,
                 });
+            EntityManager.Add(previewToast);
+
+            Entity previewModel = new Entity("previewModel")
+                .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(scaledTexture, this.RenderManager)))
+                .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
+                .AddComponent(new Transform2D()
+                {
+                    Opacity = 1,
+                    X = WaveServices.Platform.ScreenWidth / 2,
+                    Y = WaveServices.Platform.ScreenHeight / 2,
+                    DrawOrder = 0.05f,
+                    Origin = Vector2.Center,
+                });
+            EntityManager.Add(previewModel);
 
 
             TextBlock timerText = new TextBlock("Timer")

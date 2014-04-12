@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToasterRoaster.Game.Behaviors;
+using ToasterRoaster.Game.Scenes;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Math;
 using WaveEngine.Components.Animation;
@@ -100,27 +101,21 @@ namespace ToasterRoaster.Game.Scenes
             _started = true;
 
             EntityManager.Find<TextBlock>("ToasterPosition").Text = "Start";
+            
+            Entity toastModel = new Entity("toastModel")
+                .AddComponent(new Transform3D())
+                .AddComponent(new MaterialsMap(new BasicMaterial(Color.Gray)))
+                .AddComponent(Model.CreateCube())
+                .AddComponent(new SphereCollider())
+                .AddComponent(new RigidBody3D() { Mass = 1, EnableContinuousContact = true })
+                .AddComponent(new ModelRenderer());
+            EntityManager.Add(toastModel);
 
-            float size = 280f;
-
-            Entity toast = new Entity("toast")
-                .AddComponent(new Sprite("Assets/Textures/toast_2D.wpk"))
-                .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
-                          .AddComponent(new RectangleCollider())
-                .AddComponent(new Transform2D()
-                {
-                    //Opacity = 1,
-                    X = (WaveServices.Platform.ScreenWidth - size) / 2,
-                    Y = (WaveServices.Platform.ScreenHeight - size) / 2,
-                    XScale = size / 500f,
-                    YScale = size / 500f,
-                    //DrawOrder = 0.05f,
-                })
-                .AddComponent(new ToastBehavior());
-
-            EntityManager.Add(toast);
-
-            EntityManager.Find<FixedCamera>("MainCamera").Entity.AddComponent(new FlightBehavior(toast));
+            RigidBody3D rigidBody = toastModel.FindComponent<RigidBody3D>();
+            rigidBody.ResetPosition(Vector3.Zero);
+            rigidBody.ApplyLinearImpulse(25 * Vector3.UnitY);
+            
+            EntityManager.Find<FixedCamera>("MainCamera").Entity.AddComponent(new FlightBehavior(toastModel));
             //EntityManager.Find<FixedCamera>("MainCamera").Entity.AddComponent(new RigidBody3D() { IsKinematic = true, });
         }
     }
