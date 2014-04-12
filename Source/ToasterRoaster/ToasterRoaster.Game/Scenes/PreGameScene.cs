@@ -22,7 +22,7 @@ namespace ToasterRoaster.Game.Scenes
     {
         protected override void CreateScene()
         {
-            RenderManager.BackgroundColor = Color.Red;
+            RenderManager.BackgroundColor = Color.YellowGreen;
 
             TextBlock infoText = new TextBlock("infoText")
             {

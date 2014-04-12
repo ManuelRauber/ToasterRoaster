@@ -51,6 +51,7 @@
     <Compile Include="Scenes\OptionsScene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Behaviors\FlightBehavior.cs" />
+    <Compile Include="Services\LevelInformationService.cs" />
     <Compile Include="Services\TextureMapService.cs" />
   </ItemGroup>
   <ItemGroup>

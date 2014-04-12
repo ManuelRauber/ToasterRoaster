@@ -29,7 +29,7 @@ namespace ToasterRoaster.Game.Scenes
 
         protected override void CreateScene()
         {
-            RenderManager.BackgroundColor = Color.Green;
+            RenderManager.BackgroundColor = Color.CornflowerBlue;
             //RenderManager.DebugLines = true;
 
             TextBlock toasterPosition = new TextBlock("ToasterPosition")

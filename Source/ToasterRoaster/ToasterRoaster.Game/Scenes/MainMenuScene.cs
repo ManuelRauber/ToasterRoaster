@@ -1,7 +1,9 @@
 ﻿using System;
 using ToasterRoaster.Game.Common;
+using ToasterRoaster.Game.Services;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
+using WaveEngine.Framework.Services;
 using WaveEngine.Framework.UI;
 
 namespace ToasterRoaster.Game.Scenes
@@ -125,6 +127,7 @@ namespace ToasterRoaster.Game.Scenes
 
         private void GameStartButtonClicked(object sender, EventArgs e)
         {
+            WaveServices.RegisterService<LevelInformationService>(new LevelInformationService());
             SceneManager.Instance.To<PreGameScene>();
         }
 

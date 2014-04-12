@@ -17,22 +17,30 @@ namespace ToasterRoaster.Game.Scenes
     {
         protected override void CreateScene()
         {
-            RenderManager.BackgroundColor = Color.Red;
-
             BoardComparer boardComparer = new BoardComparer();
             bool[,] givenTexture = WaveServices.GetService<TextureMapService>().GivenTexture;
             bool[,] drawnTexture = WaveServices.GetService<TextureMapService>().DrawnTexture;
+            double accuracy = boardComparer.GetAccuracyInPercent(givenTexture, drawnTexture);
 
-            
+            WaveServices.GetService<LevelInformationService>().AddScore(WaveServices.GetService<LevelInformationService>().Level * accuracy);
 
-            TextBlock accuracity = new TextBlock("accuracity")
+            TextBlock accuracyText = new TextBlock("accuracyText")
             {
                 Foreground = Color.Black,
-                Text = "Die Übereinstimmung beträgt " + boardComparer.GetAccuracyInPercent(givenTexture, drawnTexture) + "%.",
+                Text = "Die Übereinstimmung beträgt " + accuracy + "%.",
                 Margin = new Thickness(20f),
                 HorizontalAlignment = HorizontalAlignment.Center,
             };
-            EntityManager.Add(accuracity);
+            EntityManager.Add(accuracyText);
+
+            TextBlock scoreText = new TextBlock("scoreText")
+            {
+                Foreground = Color.Black,
+                Text = "Punkte: " + WaveServices.GetService<LevelInformationService>().Score,
+                Margin = new Thickness(50f),
+                HorizontalAlignment = HorizontalAlignment.Center,
+            };
+            EntityManager.Add(scoreText);
 
             var mainMenuButton = new Button()
             {
@@ -45,25 +53,55 @@ namespace ToasterRoaster.Game.Scenes
             mainMenuButton.Click += mainMenuButton_Click;
             EntityManager.Add(mainMenuButton);
 
-            var nextLevelButton = new Button()
+            if (accuracy >= 80)
             {
-                Text = "Nächstes Level",
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(0, 100, 0, 0),
-                Width = 250,
-            };
-            nextLevelButton.Click += nextLevelButton_Click;
-            EntityManager.Add(nextLevelButton);
+                RenderManager.BackgroundColor = Color.Green;
+
+                var nextLevelButton = new Button()
+                {
+                    Text = "Nächstes Level",
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(0, 100, 0, 0),
+                    Width = 250,
+                };
+                nextLevelButton.Click += nextLevelButton_Click;
+
+                EntityManager.Add(nextLevelButton);
+            }
+            else
+            {
+                RenderManager.BackgroundColor = Color.Red;
+
+                var newGameButton = new Button()
+                {
+                    Text = "Neues Spiel",
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(0, 100, 0, 0),
+                    Width = 250,
+                };
+                newGameButton.Click += newGameButton_Click;
+
+                EntityManager.Add(newGameButton);
+            }
+
         }
 
-        void mainMenuButton_Click(object sender, EventArgs e)
+        private void mainMenuButton_Click(object sender, EventArgs e)
         {
             SceneManager.Instance.To<MainMenuScene>();
         }
 
-        void nextLevelButton_Click(object sender, EventArgs e)
+        private void nextLevelButton_Click(object sender, EventArgs e)
         {
+            WaveServices.GetService<LevelInformationService>().IncreaseLevel();
+            SceneManager.Instance.To<PreGameScene>();
+        }
+
+        private void newGameButton_Click(object sender, EventArgs e)
+        {
+            WaveServices.GetService<LevelInformationService>().Reset();
             SceneManager.Instance.To<PreGameScene>();
         }
     }
