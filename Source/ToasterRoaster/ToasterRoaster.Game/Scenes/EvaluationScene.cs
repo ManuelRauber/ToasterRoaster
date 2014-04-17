@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToasterRoaster.Game.Behaviors;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
 using WaveEngine.Common.Graphics;
@@ -62,7 +63,7 @@ namespace ToasterRoaster.Game.Scenes
                 Text = "Hauptmenü",
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(0),
+                Margin = new Thickness(0, 100, 0, 0),
                 Width = 250,
             };
             mainMenuButton.Click += mainMenuButton_Click;
@@ -77,7 +78,6 @@ namespace ToasterRoaster.Game.Scenes
                     Text = "Nächstes Level",
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Margin = new Thickness(0, 100, 0, 0),
                     Width = 250,
                 };
                 nextLevelButton.Click += nextLevelButton_Click;
@@ -93,7 +93,6 @@ namespace ToasterRoaster.Game.Scenes
                     Text = "Neues Spiel",
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Margin = new Thickness(0, 100, 0, 0),
                     Width = 250,
                 };
                 newGameButton.Click += newGameButton_Click;
@@ -101,6 +100,7 @@ namespace ToasterRoaster.Game.Scenes
                 EntityManager.Add(newGameButton);
             }
 
+            AddSceneBehavior(new EvaluationSceneBehavior(givenTexture, drawnTexture), SceneBehavior.Order.PostUpdate);
         }
 
         private void CreateTexturedToast(bool[,] texture, string name, string text, Vector2 position)

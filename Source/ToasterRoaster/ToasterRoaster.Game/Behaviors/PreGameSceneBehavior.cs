@@ -16,7 +16,7 @@ namespace ToasterRoaster.Game.Behaviors
         private int _time = 3;
         protected override void Update(TimeSpan gameTime)
         {
-            var textBlock = (this.Scene as PreGameScene).EntityManager.Find<TextBlock>("Timer");
+            var textBlock = Scene.EntityManager.Find<TextBlock>("Timer");
             textBlock.IsVisible = true;
             textBlock.Text = "Spiel startet in " + _time.ToString() + " Sekunden.";
 

@@ -81,7 +81,7 @@ namespace ToasterRoaster.Game.Scenes
                 });
             EntityManager.Add(previewToast);
 
-            Entity previewModel = new Entity("previewTexture")
+            Entity previewTexture = new Entity("previewTexture")
                 .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(scaledTexture, this.RenderManager)))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new Transform2D()
@@ -92,7 +92,7 @@ namespace ToasterRoaster.Game.Scenes
                     DrawOrder = 0.05f,
                     Origin = Vector2.Center,
                 });
-            EntityManager.Add(previewModel);
+            EntityManager.Add(previewTexture);
 
 
             TextBlock timerText = new TextBlock("Timer")
