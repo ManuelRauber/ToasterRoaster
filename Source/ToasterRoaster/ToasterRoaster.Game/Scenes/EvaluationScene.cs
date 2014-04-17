@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
 using WaveEngine.Common.Graphics;
+using WaveEngine.Common.Math;
+using WaveEngine.Components.Graphics2D;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
+using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.UI;
 
@@ -23,11 +26,20 @@ namespace ToasterRoaster.Game.Scenes
             double accuracy = boardComparer.GetAccuracyInPercent(givenTexture, drawnTexture);
 
             WaveServices.GetService<LevelInformationService>().AddScore(WaveServices.GetService<LevelInformationService>().Level * accuracy);
-
+            
+            TextBlock levelText = new TextBlock("levelText")
+            {
+                Foreground = Color.Black,
+                Text = "Level " + WaveServices.GetService<LevelInformationService>().Level,
+                Margin = new Thickness(20f),
+                HorizontalAlignment = HorizontalAlignment.Left,
+            };
+            EntityManager.Add(levelText);
+            
             TextBlock accuracyText = new TextBlock("accuracyText")
             {
                 Foreground = Color.Black,
-                Text = "Die Übereinstimmung beträgt " + accuracy + "%.",
+                Text = "Die Übereinstimmung beträgt " + Math.Round(accuracy, 2) + "%.",
                 Margin = new Thickness(20f),
                 HorizontalAlignment = HorizontalAlignment.Center,
             };
@@ -41,6 +53,9 @@ namespace ToasterRoaster.Game.Scenes
                 HorizontalAlignment = HorizontalAlignment.Center,
             };
             EntityManager.Add(scoreText);
+
+            CreateTexturedToast(givenTexture, "given", "Vorlage", new Vector2(WaveServices.Platform.ScreenWidth / 2 - 100, 200));
+            CreateTexturedToast(drawnTexture, "drawn", "gemaltes Muster", new Vector2(WaveServices.Platform.ScreenWidth / 2 + 100, 200));
 
             var mainMenuButton = new Button()
             {
@@ -86,6 +101,47 @@ namespace ToasterRoaster.Game.Scenes
                 EntityManager.Add(newGameButton);
             }
 
+        }
+
+        private void CreateTexturedToast(bool[,] texture, string name, string text, Vector2 position)
+        {
+            bool[,] scaledTexture = BoolToTextureConverter.ScaleTexture(texture, 100, 100);
+
+            TextBlock textBlock = new TextBlock(name + "Text")
+            {
+                Foreground = Color.Black,
+                Text = text,
+                Margin = new Thickness(position.X - 50, position.Y - 75, 0, 0),
+            };
+            EntityManager.Add(textBlock);
+            
+            Entity previewToast = new Entity(name + "Toast")
+                .AddComponent(new Sprite("Assets/Textures/toast_2D.wpk"))
+                .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
+                .AddComponent(new Transform2D()
+                {
+                    Opacity = 1,
+                    X = position.X,
+                    Y = position.Y,
+                    DrawOrder = 0.1f,
+                    XScale = 0.2f,
+                    YScale = 0.2f,
+                    Origin = Vector2.Center,
+                });
+            EntityManager.Add(previewToast);
+
+            Entity previewModel = new Entity(name + "Texture")
+                .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(scaledTexture, this.RenderManager)))
+                .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
+                .AddComponent(new Transform2D()
+                {
+                    Opacity = 1,
+                    X = position.X,
+                    Y = position.Y,
+                    DrawOrder = 0.05f,
+                    Origin = Vector2.Center,
+                });
+            EntityManager.Add(previewModel);
         }
 
         private void mainMenuButton_Click(object sender, EventArgs e)
