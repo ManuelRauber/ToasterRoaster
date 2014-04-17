@@ -26,6 +26,9 @@ namespace ToasterRoaster.Game.Common
 
                 if (drawMatrix[i / drawMatrix.GetLength(0), i % drawMatrix.GetLength(1)])
                 {
+                    pixels[4 * i + 0] = 79;
+                    pixels[4 * i + 1] = 39;
+                    pixels[4 * i + 2] = 0;
                     pixels[4 * i + 3] = Byte.MaxValue;
                 }
             }
