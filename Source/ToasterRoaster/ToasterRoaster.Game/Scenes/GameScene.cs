@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToasterRoaster.Game.Behaviors;
 using ToasterRoaster.Game.Scenes;
+using ToasterRoaster.Game.Services;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Math;
 using WaveEngine.Components.Animation;
@@ -31,6 +32,15 @@ namespace ToasterRoaster.Game.Scenes
         {
             RenderManager.BackgroundColor = Color.CornflowerBlue;
             //RenderManager.DebugLines = true;
+            
+            TextBlock levelText = new TextBlock("levelText")
+            {
+                Foreground = Color.Black,
+                Text = "Level " + WaveServices.GetService<LevelInformationService>().Level,
+                Margin = new Thickness(20f),
+                HorizontalAlignment = HorizontalAlignment.Left,
+            };
+            EntityManager.Add(levelText);
 
             TextBlock toasterPosition = new TextBlock("ToasterPosition")
             {

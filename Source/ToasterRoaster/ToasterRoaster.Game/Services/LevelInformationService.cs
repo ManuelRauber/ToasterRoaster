@@ -10,17 +10,25 @@ namespace ToasterRoaster.Game.Services
     public class LevelInformationService : Service
     {
         private ulong _level;
+        private double _score;
         public ulong Level
         {
             get { return _level; }
             private set
             {
                 _level = value;
-                TextureSize = 3 + (2 * Level);
+                TextureSize = 3 + (1 * Level);
             }
         }
         public ulong TextureSize { get; private set; }
-        public double Score { get; private set; }
+        public double Score
+        { 
+            get { return _score; }
+            private set
+            {
+                _score = Math.Round(value);
+            }
+        }
 
         protected override void Initialize()
         {

@@ -41,7 +41,7 @@ namespace ToasterRoaster.Game.Behaviors
                 width,
                 height);
 
-            _drawMatrix = new bool[5, 5];
+            _drawMatrix = new bool[WaveServices.GetService<LevelInformationService>().TextureSize, WaveServices.GetService<LevelInformationService>().TextureSize];
             WaveServices.GetService<TextureMapService>().DrawnTexture = _drawMatrix;
             EntityManager.Add(new Entity("drawnTexture"));
             base.Initialize();

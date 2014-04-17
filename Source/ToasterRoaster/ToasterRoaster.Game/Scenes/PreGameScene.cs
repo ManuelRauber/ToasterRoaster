@@ -24,24 +24,43 @@ namespace ToasterRoaster.Game.Scenes
         {
             RenderManager.BackgroundColor = Color.YellowGreen;
 
+            TextBlock levelText = new TextBlock("levelText")
+            {
+                Foreground = Color.Black,
+                Text = "Level " + WaveServices.GetService<LevelInformationService>().Level,
+                Margin = new Thickness(20f),
+                HorizontalAlignment = HorizontalAlignment.Left,
+            };
+            EntityManager.Add(levelText);
+
             TextBlock infoText = new TextBlock("infoText")
             {
                 Foreground = Color.Black,
-                Text = "Malen Sie diese Figur:",
+                Text = "Malen Sie dieses Muster:",
                 Margin = new Thickness(20f),
                 HorizontalAlignment = HorizontalAlignment.Center,
             };
             EntityManager.Add(infoText);
 
             //Add Picture here
-            bool[,] texture = new bool[,]
+            //bool[,] texture = new bool[,]
+            //    {
+            //        {true, false, false, false, true},
+            //        {false, false, true, false, false},
+            //        {false, true, false, true, false},
+            //        {false, false, true, false, false},
+            //        {true, false, false, false, true},
+            //    };
+
+            ulong textureSize = WaveServices.GetService<LevelInformationService>().TextureSize;
+            bool[,] texture = new bool[textureSize, textureSize];
+            for (ulong i = 0; i < textureSize; i++)
+            {
+                for (ulong j = 0; j < textureSize; j++)
                 {
-                    {true, false, false, false, true},
-                    {false, false, true, false, false},
-                    {false, true, false, true, false},
-                    {false, false, true, false, false},
-                    {true, false, false, false, true},
-                };
+                    texture[i, j] = WaveServices.Random.NextBool();
+                }
+            }
 
             WaveServices.GetService<TextureMapService>().GivenTexture = texture;
 
@@ -62,7 +81,7 @@ namespace ToasterRoaster.Game.Scenes
                 });
             EntityManager.Add(previewToast);
 
-            Entity previewModel = new Entity("previewModel")
+            Entity previewModel = new Entity("previewTexture")
                 .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(scaledTexture, this.RenderManager)))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
                 .AddComponent(new Transform2D()
