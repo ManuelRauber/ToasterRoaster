@@ -13,6 +13,7 @@ namespace ToasterRoaster.Game
       base.Initialize(application);
 
       WaveServices.RegisterService<TextureMapService>(new TextureMapService());
+      WaveServices.RegisterService<LevelInformationService>(new LevelInformationService());
 
       BackgroundMusicPlayer.Instance.Start();
       SceneManager.Instance.To<MainMenuScene>();

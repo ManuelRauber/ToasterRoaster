@@ -44,8 +44,8 @@ namespace ToasterRoaster.Game.Scenes
 
             TextBlock toasterPosition = new TextBlock("ToasterPosition")
             {
-                Text = "Toaster Position: ",
-                Margin = new Thickness(20f),
+                Text = "Klicken Sie auf den Toaster um zu beginnen!",
+                Margin = new Thickness(20, 50, 0, 0),
             };
             EntityManager.Add(toasterPosition);
 

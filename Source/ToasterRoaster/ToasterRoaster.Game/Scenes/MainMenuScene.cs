@@ -127,7 +127,7 @@ namespace ToasterRoaster.Game.Scenes
 
         private void GameStartButtonClicked(object sender, EventArgs e)
         {
-            WaveServices.RegisterService<LevelInformationService>(new LevelInformationService());
+            WaveServices.GetService<LevelInformationService>().Reset();
             SceneManager.Instance.To<PreGameScene>();
         }
 
