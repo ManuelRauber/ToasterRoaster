@@ -112,7 +112,7 @@ namespace ToasterRoaster.Game.Scenes
 
         private void OptionsButtonClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+					SceneManager.Instance.To<OptionsScene>();
         }
 
         private void HighscoreButtonClicked(object sender, EventArgs eventArgs)
@@ -122,8 +122,8 @@ namespace ToasterRoaster.Game.Scenes
 
         private void StatisticsButtonClicked(object sender, EventArgs e)
         {
-            SceneManager.Instance.To<OptionsScene>();
-        }
+					throw new NotImplementedException();
+				}
 
         private void GameStartButtonClicked(object sender, EventArgs e)
         {
