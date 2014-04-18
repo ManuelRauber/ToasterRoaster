@@ -122,7 +122,7 @@ namespace ToasterRoaster.Game.Scenes
 
         private void StatisticsButtonClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            SceneManager.Instance.To<OptionsScene>();
         }
 
         private void GameStartButtonClicked(object sender, EventArgs e)
