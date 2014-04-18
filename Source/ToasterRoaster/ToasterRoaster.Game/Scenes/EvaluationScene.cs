@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ToasterRoaster.Game.Behaviors;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
+using ToasterRoaster.Game.Services.Highscore;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Math;
 using WaveEngine.Components.Graphics2D;
@@ -26,7 +27,9 @@ namespace ToasterRoaster.Game.Scenes
             bool[,] drawnTexture = WaveServices.GetService<TextureMapService>().DrawnTexture;
             double accuracy = boardComparer.GetAccuracyInPercent(givenTexture, drawnTexture);
 
-            WaveServices.GetService<LevelInformationService>().AddScore(WaveServices.GetService<LevelInformationService>().Level * accuracy);
+	        var levelService = WaveServices.GetService<LevelInformationService>();
+
+            levelService.AddScore(levelService.Level * accuracy);
             
             TextBlock levelText = new TextBlock("levelText")
             {
@@ -98,6 +101,13 @@ namespace ToasterRoaster.Game.Scenes
                 newGameButton.Click += newGameButton_Click;
 
                 EntityManager.Add(newGameButton);
+
+							HighscoreManager.Instance.AddHighscore(new HighscoreEntry()
+							{
+								Level = Convert.ToInt32(levelService.Level),
+								Points = Convert.ToInt32(levelService.Score),
+								Name = Configuration.Instance.PlayerName,
+							});
             }
 
             AddSceneBehavior(new EvaluationSceneBehavior(givenTexture, drawnTexture), SceneBehavior.Order.PostUpdate);

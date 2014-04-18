@@ -117,8 +117,8 @@ namespace ToasterRoaster.Game.Scenes
 
         private void HighscoreButtonClicked(object sender, EventArgs eventArgs)
         {
-            throw new NotImplementedException();
-        }
+					SceneManager.Instance.To<HighscoreScene>();
+				}
 
         private void StatisticsButtonClicked(object sender, EventArgs e)
         {
