@@ -36,7 +36,7 @@ namespace ToasterRoaster.Game.Scenes
             TextBlock infoText = new TextBlock("infoText")
             {
                 Foreground = Color.Black,
-                Text = "Malen Sie dieses Muster:",
+                Text = String.Format("{0}, please draw this pattern:", Configuration.Instance.PlayerName),
                 Margin = new Thickness(20f),
                 HorizontalAlignment = HorizontalAlignment.Center,
             };
