@@ -40,7 +40,7 @@ namespace ToasterRoaster.Game.Scenes
             TextBlock accuracyText = new TextBlock("accuracyText")
             {
                 Foreground = Color.Black,
-                Text = "Die Übereinstimmung beträgt " + Math.Round(accuracy, 2) + "%.",
+                Text = String.Format("{0}, Deine Übereinstimmung beträgt {1:##.##}%.", Configuration.Instance.PlayerName, accuracy),
                 Margin = new Thickness(20f),
                 HorizontalAlignment = HorizontalAlignment.Center,
             };
