@@ -22,5 +22,10 @@ namespace ToasterRoaster.Game
 			BackgroundMusicPlayer.Instance.Start();
 			SceneManager.Instance.To<MainMenuScene>();
 		}
+
+		public void Suspend()
+		{
+			WaveServices.GetService<AnalyticsService>().Close();
+		}
 	}
 }

@@ -16,6 +16,7 @@ namespace ToasterRoaster.Game.Services
 		protected override void Initialize()
 		{
 			_localytics.Open();
+			_localytics.Upload();
 		}
 
 		public void TagEvent(string eventName, string attribute, string value)
@@ -27,6 +28,12 @@ namespace ToasterRoaster.Game.Services
 		public void TagEvent(string eventName, Dictionary<string, string> attributes)
 		{
 			_localytics.TagEvent(eventName, attributes);
+			_localytics.Upload();
+		}
+
+		public void Close()
+		{
+			_localytics.Close();
 			_localytics.Upload();
 		}
 	}
