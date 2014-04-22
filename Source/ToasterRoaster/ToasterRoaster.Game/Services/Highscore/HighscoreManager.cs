@@ -28,6 +28,10 @@ namespace ToasterRoaster.Game.Services.Highscore
 		public void RegisterDefaultServices()
 		{
 			RegisterHighscoreService("local", new LocalHighscoreService());
+
+			// Enable this for registering the online highscore service
+			// Does currently not work due to missing azure subscription
+			//RegisterHighscoreService("online", new AzureHighscoreService());
 		}
 
 		public List<HighscoreEntry> GetTopTenFrom(string serviceName)
