@@ -62,6 +62,9 @@
     <Compile Include="Services\TextureMapService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.WindowsAzure.Mobile">
+      <HintPath>..\..\packages\WindowsAzure.MobileServices.1.2.1\lib\portable-win+net45+wp8+wpa81+monotouch+monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
     <Reference Include="WaveEngine.Adapter">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Wave Engine\v1.0\Lib\Windows\WaveEngine.Adapter.dll</HintPath>
     </Reference>
