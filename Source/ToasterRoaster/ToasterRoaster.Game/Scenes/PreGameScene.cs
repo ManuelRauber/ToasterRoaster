@@ -104,7 +104,9 @@ namespace ToasterRoaster.Game.Scenes
             };
             EntityManager.Add(timerText);
 
-            this.AddSceneBehavior(new PreGameSceneBehavior(), SceneBehavior.Order.PostUpdate);
+			this.AddSceneBehavior(new PreGameSceneBehavior(), SceneBehavior.Order.PostUpdate);
+
+			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Pre-game");
         }
     }
 }

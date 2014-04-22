@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using ToasterRoaster.Game.Common;
+using ToasterRoaster.Game.Services;
 using ToasterRoaster.Game.Services.Highscore;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
+using WaveEngine.Framework.Services;
 using WaveEngine.Framework.UI;
 
 namespace ToasterRoaster.Game.Scenes
@@ -15,6 +17,8 @@ namespace ToasterRoaster.Game.Scenes
 		protected override void CreateScene()
 		{
 			CreateUI();
+
+			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Highscore");
 		}
 
 		private void CreateUI()

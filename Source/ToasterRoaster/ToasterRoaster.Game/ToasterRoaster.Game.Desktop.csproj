@@ -53,6 +53,7 @@
     <Compile Include="Scenes\OptionsScene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Behaviors\FlightBehavior.cs" />
+    <Compile Include="Services\AnalyticsService.cs" />
     <Compile Include="Services\Highscore\AzureHighscoreService.cs" />
     <Compile Include="Services\Highscore\HighscoreEntry.cs" />
     <Compile Include="Services\Highscore\HighscoreManager.cs" />

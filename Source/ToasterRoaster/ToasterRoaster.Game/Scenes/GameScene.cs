@@ -52,7 +52,9 @@ namespace ToasterRoaster.Game.Scenes
             CreateLight();
             CreateCamera();
             CreateToaster();
-            //CreatePlate();
+			//CreatePlate();
+
+			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "In-game");
         }
 
         private void CreatePlate()

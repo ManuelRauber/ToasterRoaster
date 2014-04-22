@@ -7,19 +7,20 @@ using WaveEngine.Framework.Services;
 
 namespace ToasterRoaster.Game
 {
-  public class Game : WaveEngine.Framework.Game
-  {
-    public override void Initialize(IApplication application)
-    {
-      base.Initialize(application);
+	public class Game : WaveEngine.Framework.Game
+	{
+		public override void Initialize(IApplication application)
+		{
+			base.Initialize(application);
 
-      WaveServices.RegisterService<TextureMapService>(new TextureMapService());
-      WaveServices.RegisterService<LevelInformationService>(new LevelInformationService());
+			WaveServices.RegisterService(new TextureMapService());
+			WaveServices.RegisterService(new LevelInformationService());
+			WaveServices.RegisterService(new AnalyticsService(application));
 
 			HighscoreManager.Instance.RegisterDefaultServices();
 
-      BackgroundMusicPlayer.Instance.Start();
-      SceneManager.Instance.To<MainMenuScene>();
-    }
-  }
+			BackgroundMusicPlayer.Instance.Start();
+			SceneManager.Instance.To<MainMenuScene>();
+		}
+	}
 }

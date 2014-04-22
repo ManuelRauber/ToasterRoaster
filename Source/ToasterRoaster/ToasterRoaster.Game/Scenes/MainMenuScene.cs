@@ -16,6 +16,8 @@ namespace ToasterRoaster.Game.Scenes
         {
             //RenderManager.DebugLines = true;
             CreateUI();
+
+			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Main Menu");
         }
 
         private void CreateUI()

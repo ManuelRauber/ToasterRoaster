@@ -110,7 +110,9 @@ namespace ToasterRoaster.Game.Scenes
 							});
             }
 
-            AddSceneBehavior(new EvaluationSceneBehavior(givenTexture, drawnTexture), SceneBehavior.Order.PostUpdate);
+			AddSceneBehavior(new EvaluationSceneBehavior(givenTexture, drawnTexture), SceneBehavior.Order.PostUpdate);
+
+			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Evaluation");
         }
 
         private void CreateTexturedToast(bool[,] texture, string name, string text, Vector2 position)

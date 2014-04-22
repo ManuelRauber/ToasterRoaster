@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using ToasterRoaster.Game.Common;
+using ToasterRoaster.Game.Services;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Services;
@@ -19,7 +20,9 @@ namespace ToasterRoaster.Game.Scenes
       CreateGrid();
       CreateHeader();
       CreateHelpText();
-      CreateBackButton();
+	  CreateBackButton();
+
+	  WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Help");
     }
 
     private void CreateBackButton()
