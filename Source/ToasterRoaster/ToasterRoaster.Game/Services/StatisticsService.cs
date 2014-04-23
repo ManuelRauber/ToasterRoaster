@@ -52,7 +52,7 @@ namespace ToasterRoaster.Game.Services
 		/// </summary>
 		public double OverallAccuracy
 		{
-			get { return _statistics.AccumulatedAccuracy / (_statistics.GamesWon + _statistics.GamesLost); }
+			get { return _statistics.AccumulatedAccuracy / _statistics.TotalGamesPlayed; }
 			set
 			{
 				_statistics.AccumulatedAccuracy = value;
