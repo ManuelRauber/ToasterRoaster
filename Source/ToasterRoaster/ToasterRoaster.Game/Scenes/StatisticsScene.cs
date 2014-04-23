@@ -75,6 +75,7 @@ namespace ToasterRoaster.Game.Scenes
 			{
 				Text = statisticName,
 				TextAlignment = TextAlignment.Left,
+				HorizontalAlignment = HorizontalAlignment.Left,
 			};
 
 			nameBlock.SetGridProperties(row, 0);
@@ -84,6 +85,7 @@ namespace ToasterRoaster.Game.Scenes
 			var valueBlock = new TextBlock()
 			{
 				Text = value.ToString(),
+				TextAlignment = TextAlignment.Right,
 				HorizontalAlignment = HorizontalAlignment.Right,
 			};
 
