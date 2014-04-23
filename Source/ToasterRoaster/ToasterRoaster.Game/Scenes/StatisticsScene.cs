@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
 using WaveEngine.Components.UI;
@@ -27,7 +28,7 @@ namespace ToasterRoaster.Game.Scenes
 			_statisticMap = new Dictionary<string, object>()
 			{
 				{ "Total Games played", service.TotalGamesPlayed },
-				{ "Overall accuracy", service.OverallAccuracy },
+				{ "Overall accuracy", String.Format("{0:##.##}", service.OverallAccuracy) },
 				{ "Games won", service.GamesWon },
 				{ "Games lost", service.GamesLost },
 				{ "Three-star games", service.ThreeStarGames },
