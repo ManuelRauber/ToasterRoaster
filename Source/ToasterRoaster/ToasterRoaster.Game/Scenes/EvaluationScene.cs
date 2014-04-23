@@ -28,6 +28,9 @@ namespace ToasterRoaster.Game.Scenes
             double accuracy = boardComparer.GetAccuracyInPercent(givenTexture, drawnTexture);
 
 	        var levelService = WaveServices.GetService<LevelInformationService>();
+	        var statisticsService = WaveServices.GetService<StatisticsService>();
+
+	        statisticsService.OverallAccuracy += accuracy;
 
             levelService.AddScore(levelService.Level * accuracy);
             
@@ -74,6 +77,21 @@ namespace ToasterRoaster.Game.Scenes
 
             if (accuracy >= 80)
             {
+	            statisticsService.GamesWon++;
+
+	            if (accuracy >= 95)
+	            {
+		            statisticsService.ThreeStarGames++;
+	            }
+							else if (accuracy >= 88)
+							{
+								statisticsService.TwoStarGames++;
+							}
+							else
+							{
+								statisticsService.OneStarGames++;
+							}
+
                 RenderManager.BackgroundColor = Color.Green;
 
                 var nextLevelButton = new Button()
@@ -89,6 +107,7 @@ namespace ToasterRoaster.Game.Scenes
             }
             else
             {
+	            statisticsService.GamesLost--;
                 RenderManager.BackgroundColor = Color.Red;
 
                 var newGameButton = new Button()

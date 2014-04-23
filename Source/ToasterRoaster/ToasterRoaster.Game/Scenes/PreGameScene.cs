@@ -22,6 +22,8 @@ namespace ToasterRoaster.Game.Scenes
     {
         protected override void CreateScene()
         {
+	        WaveServices.GetService<StatisticsService>().TotalGamesPlayed++;
+
             RenderManager.BackgroundColor = Color.YellowGreen;
 
             TextBlock levelText = new TextBlock("levelText")
