@@ -29,7 +29,27 @@ namespace ToasterRoaster.Game.Scenes
 			CreatePlayerNameOption();
 			CreateMusicVolumeOption();
 			CreateAutomaticHighscoreUploadOption();
+			CreateResetStatisticButton();
 			CreateButtons();
+		}
+
+		private void CreateResetStatisticButton()
+		{
+			var resetButton = new Button()
+			{
+				Text = "Reset statistic"
+			};
+
+			resetButton.Click += (sender, args) =>
+			{
+				var service = WaveServices.GetService<StatisticsService>();
+				service.ResetStatistic();
+				WaveServices.Platform.ShowMessageBox("Statistic reset", "Your statistics have been resetted");
+			};
+
+			resetButton.SetGridProperties(6, 0);
+			resetButton.SetValue(GridControl.ColumnSpanProperty, 2);
+			_grid.Add(resetButton);
 		}
 
 		private void CreateButtons()
@@ -57,7 +77,7 @@ namespace ToasterRoaster.Game.Scenes
 			stackPanel.Add(okButton);
 			stackPanel.Add(cancelButton);
 			
-			stackPanel.SetGridProperties(6, 0);
+			stackPanel.SetGridProperties(7, 0);
 			_grid.Add(stackPanel);
 		}
 
@@ -140,6 +160,7 @@ namespace ToasterRoaster.Game.Scenes
 				VerticalAlignment = VerticalAlignment.Stretch,
 			};
 
+			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
