@@ -53,7 +53,7 @@ namespace ToasterRoaster.Game.Scenes
 
 			stackPanel.Add(header);
 
-			var items = HighscoreManager.Instance.GetTopTenFrom("local");
+			var items = WaveServices.GetService<HighscoreServices>().GetTopTenFrom("local");
 
 			AddHighscoreEntries(items, stackPanel);
 

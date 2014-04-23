@@ -102,7 +102,7 @@ namespace ToasterRoaster.Game.Scenes
 
                 EntityManager.Add(newGameButton);
 
-							HighscoreManager.Instance.AddHighscore(new HighscoreEntry()
+							WaveServices.GetService<HighscoreServices>().AddHighscore(new HighscoreEntry()
 							{
 								Level = Convert.ToInt32(levelService.Level),
 								Points = Convert.ToInt32(levelService.Score),

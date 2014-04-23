@@ -16,8 +16,9 @@ namespace ToasterRoaster.Game
 			WaveServices.RegisterService(new TextureMapService());
 			WaveServices.RegisterService(new LevelInformationService());
 			WaveServices.RegisterService(new AnalyticsService(application));
-
-			HighscoreManager.Instance.RegisterDefaultServices();
+			WaveServices.RegisterService(new HighscoreServices());
+			
+			WaveServices.GetService<HighscoreServices>().RegisterDefaultServices();
 
 			BackgroundMusicPlayer.Instance.Start();
 			SceneManager.Instance.To<MainMenuScene>();

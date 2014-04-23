@@ -1,24 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WaveEngine.Common;
 
 namespace ToasterRoaster.Game.Services.Highscore
 {
-	public class HighscoreManager
+	public class HighscoreServices : Service
 	{
-		private static readonly Lazy<HighscoreManager> _instance = new Lazy<HighscoreManager>(() => new HighscoreManager());
-
-		private readonly Dictionary<string, IHighscoreService> _services; 
-
-		public static HighscoreManager Instance
-		{
-			get { return _instance.Value; }
-		}
-
-		private HighscoreManager()
-		{
-			_services = new Dictionary<string, IHighscoreService>();
-		}
+		private Dictionary<string, IHighscoreService> _services; 
 
 		public void RegisterHighscoreService(string name, IHighscoreService service)
 		{
@@ -52,6 +41,11 @@ namespace ToasterRoaster.Game.Services.Highscore
 			{
 				service.Add(entry);
 			}
+		}
+
+		protected override void Initialize()
+		{
+			_services = new Dictionary<string, IHighscoreService>();
 		}
 	}
 }

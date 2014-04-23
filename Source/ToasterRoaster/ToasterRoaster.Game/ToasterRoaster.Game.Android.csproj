@@ -56,7 +56,7 @@
     <Compile Include="Services\AnalyticsService.cs" />
     <Compile Include="Services\Highscore\AzureHighscoreService.cs" />
     <Compile Include="Services\Highscore\HighscoreEntry.cs" />
-    <Compile Include="Services\Highscore\HighscoreManager.cs" />
+    <Compile Include="Services\Highscore\HighscoreServices.cs" />
     <Compile Include="Services\Highscore\IHighscoreService.cs" />
     <Compile Include="Services\Highscore\LocalHighscoreService.cs" />
     <Compile Include="Services\LevelInformationService.cs" />
