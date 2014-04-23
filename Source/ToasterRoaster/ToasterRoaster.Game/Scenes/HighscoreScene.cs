@@ -95,7 +95,7 @@ namespace ToasterRoaster.Game.Scenes
 		{
 			var textBlock = new TextBlock()
 			{
-				Text = "ToasterRoaster - Optionen",
+				Text = "ToasterRoaster - Highscore",
 				HorizontalAlignment = HorizontalAlignment.Center,
 			};
 
