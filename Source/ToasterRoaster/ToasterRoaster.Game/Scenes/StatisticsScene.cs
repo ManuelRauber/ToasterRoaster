@@ -64,7 +64,7 @@ namespace ToasterRoaster.Game.Scenes
 			int count = 0;
 			foreach (KeyValuePair<string, object> kvp in _statisticMap)
 			{
-				CreateStatistic(kvp.Key, kvp.Value, 2 + count);
+				CreateStatistic(kvp.Key, kvp.Value, 1 + count);
 				count++;
 			}
 		}
