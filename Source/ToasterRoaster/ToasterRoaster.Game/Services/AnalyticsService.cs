@@ -10,7 +10,7 @@ namespace ToasterRoaster.Game.Services
 
 		public AnalyticsService(IApplication application)
 		{
-			_localytics = new Localytics(application.Adapter, new LocalyticsInfo("19121dc67d0744823bcf572-3a407cd6-ca5c-11e3-9c53-009c5fda0a25"));
+			_localytics = new Localytics(application.Adapter, new LocalyticsInfo("0795f75e61fd8976e45b879-54089388-ca6c-11e3-99c4-005cf8cbabd8"));
 		}
 
 		protected override void Initialize()
