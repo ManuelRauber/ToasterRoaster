@@ -107,7 +107,7 @@ namespace ToasterRoaster.Game.Scenes
             }
             else
             {
-	            statisticsService.GamesLost--;
+	            statisticsService.GamesLost++;
                 RenderManager.BackgroundColor = Color.Red;
 
                 var newGameButton = new Button()
