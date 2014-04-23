@@ -100,6 +100,7 @@ namespace ToasterRoaster.Game.Scenes
 			{
 				HorizontalAlignment = HorizontalAlignment.Center,
 				VerticalAlignment = VerticalAlignment.Stretch,
+				Width = 500,
 			};
 
 			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
