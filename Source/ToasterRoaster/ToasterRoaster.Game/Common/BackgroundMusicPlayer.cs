@@ -23,6 +23,7 @@ namespace ToasterRoaster.Game.Common
 		private BackgroundMusicPlayer()
 		{
 			Configuration.Instance.OnConfigurationChanged += ConfigurationChanged;
+			ConfigurationChanged();
 			PreloadBackgroundMusic();
 			WaveServices.MusicPlayer.OnSongCompleted += MusicPlayerSongCompleted;
 		}
