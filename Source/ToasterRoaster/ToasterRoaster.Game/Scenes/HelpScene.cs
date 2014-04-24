@@ -81,7 +81,7 @@ namespace ToasterRoaster.Game.Scenes
     {
       _grid = new Grid()
       {
-				Width = 500, 
+				Width = WaveServices.Platform.ScreenWidth, 
 				HorizontalAlignment = HorizontalAlignment.Center,
       };
 
