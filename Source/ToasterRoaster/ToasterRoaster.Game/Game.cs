@@ -18,6 +18,7 @@ namespace ToasterRoaster.Game
 			WaveServices.RegisterService(new AnalyticsService(application));
 			WaveServices.RegisterService(new HighscoreServices());
 			WaveServices.RegisterService(new StatisticsService());
+			WaveServices.RegisterService(new AchievementService());
 			
 			WaveServices.GetService<HighscoreServices>().RegisterDefaultServices();
 

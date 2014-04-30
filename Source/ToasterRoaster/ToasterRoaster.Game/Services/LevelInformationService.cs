@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToasterRoaster.Game.Services.Achievements;
 using WaveEngine.Common;
+using WaveEngine.Framework.Services;
 
 namespace ToasterRoaster.Game.Services
 {
@@ -18,9 +20,34 @@ namespace ToasterRoaster.Game.Services
             {
                 _level = value;
                 TextureSize = 3 + (1 * Level);
+
+	            CheckAchievements();
             }
         }
-        public ulong TextureSize { get; private set; }
+
+	    private void CheckAchievements()
+	    {
+		    var achievementService = WaveServices.GetService<AchievementService>();
+
+		    if (_level == 5)
+		    {
+			    achievementService.Steps(GameStep.ReachedLevelFive);
+			    return;
+		    }
+
+		    if (_level == 10)
+		    {
+			    achievementService.Steps(GameStep.ReachedLevelTen);
+			    return;
+		    }
+
+		    if (_level == 20)
+		    {
+			    achievementService.Steps(GameStep.ReachedLevelTwenty);
+		    }
+	    }
+
+	    public ulong TextureSize { get; private set; }
         public double Score
         { 
             get { return _score; }

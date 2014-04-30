@@ -54,6 +54,17 @@
     <Compile Include="Scenes\OptionsScene.cs" />
     <Compile Include="Scenes\SceneManager.cs" />
     <Compile Include="Scenes\StatisticsScene.cs" />
+    <Compile Include="Services\AchievementService.cs" />
+    <Compile Include="Services\Achievements\BaseAchievement.cs" />
+    <Compile Include="Services\Achievements\FirstGameLostAchievement.cs" />
+    <Compile Include="Services\Achievements\FirstGameWonAchievement.cs" />
+    <Compile Include="Services\Achievements\GameStep.cs" />
+    <Compile Include="Services\Achievements\IAchievement.cs" />
+    <Compile Include="Services\Achievements\LostFiveGamesInARow.cs" />
+    <Compile Include="Services\Achievements\OneHundredGamesPlayedAchievement.cs" />
+    <Compile Include="Services\Achievements\PlayedForTheFirstTimeAchievement.cs" />
+    <Compile Include="Services\Achievements\TenGamesPlayedAchievement.cs" />
+    <Compile Include="Services\Achievements\WonFiveGamesInARowAchievement.cs" />
     <Compile Include="Services\AnalyticsService.cs" />
     <Compile Include="Services\Highscore\AzureHighscoreService.cs" />
     <Compile Include="Services\Highscore\HighscoreEntry.cs" />

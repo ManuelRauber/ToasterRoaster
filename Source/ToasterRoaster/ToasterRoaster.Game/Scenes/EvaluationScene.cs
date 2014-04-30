@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ToasterRoaster.Game.Behaviors;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
+using ToasterRoaster.Game.Services.Achievements;
 using ToasterRoaster.Game.Services.Highscore;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Common.Math;
@@ -29,6 +30,7 @@ namespace ToasterRoaster.Game.Scenes
 
 	        var levelService = WaveServices.GetService<LevelInformationService>();
 	        var statisticsService = WaveServices.GetService<StatisticsService>();
+	        var achievementService = WaveServices.GetService<AchievementService>();
 
 	        statisticsService.OverallAccuracy += accuracy;
 
@@ -75,21 +77,33 @@ namespace ToasterRoaster.Game.Scenes
             mainMenuButton.Click += mainMenuButton_Click;
             EntityManager.Add(mainMenuButton);
 
+
+						achievementService.Steps(GameStep.GameFinished);
+
             if (accuracy >= 80)
             {
 	            statisticsService.GamesWon++;
+							achievementService.Steps(GameStep.GameWon);
+
+	            if (accuracy >= 99.9)
+	            {
+		            achievementService.Steps(GameStep.OneHundredPercentAccuracy);
+	            }
 
 	            if (accuracy >= 95)
 	            {
 		            statisticsService.ThreeStarGames++;
+								achievementService.Steps(GameStep.ThreeStarGameWon);
 	            }
 							else if (accuracy >= 88)
 							{
 								statisticsService.TwoStarGames++;
+								achievementService.Steps(GameStep.TwoStarGameWon);
 							}
 							else
 							{
 								statisticsService.OneStarGames++;
+								achievementService.Steps(GameStep.OneStarGameWon);
 							}
 
                 RenderManager.BackgroundColor = Color.Green;
@@ -107,7 +121,13 @@ namespace ToasterRoaster.Game.Scenes
             }
             else
             {
+	            if (accuracy <= 0.1)
+	            {
+		            achievementService.Steps(GameStep.ZeroPercentAccuracy);
+	            }
+
 	            statisticsService.GamesLost++;
+							achievementService.Steps(GameStep.GameLost);
                 RenderManager.BackgroundColor = Color.Red;
 
                 var newGameButton = new Button()

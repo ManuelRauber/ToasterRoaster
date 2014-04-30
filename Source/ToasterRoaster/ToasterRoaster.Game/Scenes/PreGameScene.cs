@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ToasterRoaster.Game.Scenes;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
+using ToasterRoaster.Game.Services.Achievements;
 using WaveEngine.Common.Graphics;
 using WaveEngine.Components.Graphics2D;
 using WaveEngine.Components.UI;
@@ -23,6 +24,7 @@ namespace ToasterRoaster.Game.Scenes
         protected override void CreateScene()
         {
 	        WaveServices.GetService<StatisticsService>().TotalGamesPlayed++;
+					WaveServices.GetService<AchievementService>().Steps(GameStep.GameStarted);
 
             RenderManager.BackgroundColor = Color.YellowGreen;
 
