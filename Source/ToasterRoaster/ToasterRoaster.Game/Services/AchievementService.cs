@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using ToasterRoaster.Game.Services.Achievements;
 using WaveEngine.Common;
@@ -21,6 +23,13 @@ namespace ToasterRoaster.Game.Services
 		}
 		
 		[DataContract]
+		[KnownType(typeof(Achievements.FirstGameLostAchievement))]
+		[KnownType(typeof(Achievements.FirstGameWonAchievement))]
+		[KnownType(typeof(Achievements.LostFiveGamesInARowAchievement))]
+		[KnownType(typeof(Achievements.OneHundredGamesPlayedAchievement))]
+		[KnownType(typeof(Achievements.PlayedForTheFirstTimeAchievement))]
+		[KnownType(typeof(Achievements.TenGamesPlayedAchievement))]
+		[KnownType(typeof(Achievements.WonFiveGamesInARowAchievement))]
 		private class AchievementList
 		{
 			private List<IAchievement> _achievements;
@@ -66,13 +75,20 @@ namespace ToasterRoaster.Game.Services
 
 		private void LoadAchievements()
 		{
-			if (!WaveServices.Storage.ExistsStorageFile(ACHIEVEMENTS_FILE_NAME))
+			try
 			{
-				return;
-			}
+				if (!WaveServices.Storage.ExistsStorageFile(ACHIEVEMENTS_FILE_NAME))
+				{
+					return;
+				}
 
-			_achievementList = WaveServices.Storage.Read<AchievementList>(ACHIEVEMENTS_FILE_NAME);
-			AttachAchievementHandler();
+				_achievementList = WaveServices.Storage.Read<AchievementList>(ACHIEVEMENTS_FILE_NAME);
+				AttachAchievementHandler();
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(ex);
+			}
 		}
 
 		private void AttachAchievementHandler()
