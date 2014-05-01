@@ -77,7 +77,6 @@ namespace ToasterRoaster.Game.Scenes
             mainMenuButton.Click += mainMenuButton_Click;
             EntityManager.Add(mainMenuButton);
 
-
 						achievementService.Steps(GameStep.GameFinished);
 
             if (accuracy >= 80)

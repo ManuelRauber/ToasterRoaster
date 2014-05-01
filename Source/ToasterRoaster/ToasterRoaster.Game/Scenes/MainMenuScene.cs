@@ -26,6 +26,7 @@ namespace ToasterRoaster.Game.Scenes
 			CreateHeader();
 			CreateGameStartButton();
 			CreateStatisticsButton();
+			CreateAchievementButton();
 			CreateHighscoreButton();
 			CreateHelpButton();
 			CreateOptionsButton();
@@ -39,6 +40,7 @@ namespace ToasterRoaster.Game.Scenes
 				VerticalAlignment = VerticalAlignment.Stretch,
 			};
 
+			_grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
@@ -75,19 +77,24 @@ namespace ToasterRoaster.Game.Scenes
 			CreateSimpleButton("Statistics", 2, StatisticsButtonClicked);
 		}
 
+		private void CreateAchievementButton()
+		{
+			CreateSimpleButton("Achievement", 3, AchievementButtonClicked);
+		}
+
 		private void CreateHighscoreButton()
 		{
-			CreateSimpleButton("Highscore", 3, HighscoreButtonClicked);
+			CreateSimpleButton("Highscore", 4, HighscoreButtonClicked);
 		}
 
 		private void CreateHelpButton()
 		{
-			CreateSimpleButton("Help", 4, HelpButtonClicked);
+			CreateSimpleButton("Help", 5, HelpButtonClicked);
 		}
 
 		private void CreateOptionsButton()
 		{
-			CreateSimpleButton("Options", 5, OptionsButtonClicked);
+			CreateSimpleButton("Options", 6, OptionsButtonClicked);
 		}
 
 		private Button CreateSimpleButton(string text, int row, EventHandler clickHandler)
@@ -136,6 +143,11 @@ namespace ToasterRoaster.Game.Scenes
 		private static void HelpButtonClicked(object sender, EventArgs e)
 		{
 			SceneManager.Instance.To<HelpScene>();
+		}
+
+		private void AchievementButtonClicked(object sender, EventArgs e)
+		{
+			SceneManager.Instance.To<AchievementsScene>();
 		}
 
 		#endregion

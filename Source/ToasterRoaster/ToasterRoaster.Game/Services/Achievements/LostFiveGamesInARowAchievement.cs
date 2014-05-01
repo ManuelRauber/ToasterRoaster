@@ -1,6 +1,6 @@
 ﻿namespace ToasterRoaster.Game.Services.Achievements
 {
-	public class LostFiveGamesInARow : BaseAchievement
+	public class LostFiveGamesInARowAchievement : BaseAchievement
 	{
 		public override string Title
 		{

@@ -45,6 +45,7 @@
     <Compile Include="Common\UIExtensions.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\AchievementsScene.cs" />
     <Compile Include="Scenes\EvaluationScene.cs" />
     <Compile Include="Scenes\GameScene.cs" />
     <Compile Include="Scenes\HelpScene.cs" />
@@ -60,7 +61,7 @@
     <Compile Include="Services\Achievements\FirstGameWonAchievement.cs" />
     <Compile Include="Services\Achievements\GameStep.cs" />
     <Compile Include="Services\Achievements\IAchievement.cs" />
-    <Compile Include="Services\Achievements\LostFiveGamesInARow.cs" />
+    <Compile Include="Services\Achievements\LostFiveGamesInARowAchievement.cs" />
     <Compile Include="Services\Achievements\OneHundredGamesPlayedAchievement.cs" />
     <Compile Include="Services\Achievements\PlayedForTheFirstTimeAchievement.cs" />
     <Compile Include="Services\Achievements\TenGamesPlayedAchievement.cs" />

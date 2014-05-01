@@ -15,6 +15,11 @@ namespace ToasterRoaster.Game.Services
 
 		public event AchievementCompletedHandler AchievementCompleted;
 
+		public List<IAchievement> Achievements
+		{
+			get { return _achievementList.Achievements; }
+		}
+		
 		[DataContract]
 		private class AchievementList
 		{
@@ -44,7 +49,7 @@ namespace ToasterRoaster.Game.Services
 		{
 			RegisterAchievement<FirstGameLostAchievement>();
 			RegisterAchievement<FirstGameWonAchievement>();
-			RegisterAchievement<LostFiveGamesInARow>();
+			RegisterAchievement<LostFiveGamesInARowAchievement>();
 			RegisterAchievement<OneHundredGamesPlayedAchievement>();
 			RegisterAchievement<PlayedForTheFirstTimeAchievement>();
 			RegisterAchievement<TenGamesPlayedAchievement>();
