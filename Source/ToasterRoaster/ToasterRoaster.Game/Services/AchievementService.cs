@@ -35,7 +35,7 @@ namespace ToasterRoaster.Game.Services
 
 		protected override void Initialize()
 		{
-			_achievementList = new AchievementList();
+			_achievementList = new AchievementList {Achievements = new List<IAchievement>()};
 
 			LoadAchievements();
 

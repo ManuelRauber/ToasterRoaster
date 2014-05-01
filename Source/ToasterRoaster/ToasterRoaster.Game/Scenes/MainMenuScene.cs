@@ -79,7 +79,7 @@ namespace ToasterRoaster.Game.Scenes
 
 		private void CreateAchievementButton()
 		{
-			CreateSimpleButton("Achievement", 3, AchievementButtonClicked);
+			CreateSimpleButton("Achievements", 3, AchievementButtonClicked);
 		}
 
 		private void CreateHighscoreButton()
