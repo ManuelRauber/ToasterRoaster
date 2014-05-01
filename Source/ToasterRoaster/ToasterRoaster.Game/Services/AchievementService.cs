@@ -21,6 +21,13 @@ namespace ToasterRoaster.Game.Services
 		{
 			get { return _achievementList.Achievements; }
 		}
+
+		public void Reset()
+		{
+			_achievementList = new AchievementList();
+			RegisterAchievements();
+			SaveAchievements();
+		}
 		
 		[DataContract]
 		[KnownType(typeof(Achievements.FirstGameLostAchievement))]
