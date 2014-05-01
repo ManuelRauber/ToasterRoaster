@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
 using ToasterRoaster.Game.Services.Achievements;
@@ -33,10 +34,11 @@ namespace ToasterRoaster.Game.Scenes
 
 		private void CreateAchievements()
 		{
-			for (int i = 0; i < _achievements.Count; i++)
+			int count = 0;
+			foreach (var achievement in _achievements.OrderByDescending(x => x.PercentageCompleted >= 100).ThenBy(x => x.Title))
 			{
-				var achievement = _achievements[i];
-				CreateAchievement(achievement, 1 + i);
+				CreateAchievement(achievement, 1 + count);
+				count++;
 			}
 		}
 
