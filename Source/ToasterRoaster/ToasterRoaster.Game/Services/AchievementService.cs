@@ -24,19 +24,19 @@ namespace ToasterRoaster.Game.Services
 
 		public void Reset()
 		{
-			_achievementList = new AchievementList();
+			_achievementList = new AchievementList { Achievements = new List<IAchievement>() };
 			RegisterAchievements();
 			SaveAchievements();
 		}
 		
 		[DataContract]
-		[KnownType(typeof(Achievements.FirstGameLostAchievement))]
-		[KnownType(typeof(Achievements.FirstGameWonAchievement))]
-		[KnownType(typeof(Achievements.LostFiveGamesInARowAchievement))]
-		[KnownType(typeof(Achievements.OneHundredGamesPlayedAchievement))]
-		[KnownType(typeof(Achievements.PlayedForTheFirstTimeAchievement))]
-		[KnownType(typeof(Achievements.TenGamesPlayedAchievement))]
-		[KnownType(typeof(Achievements.WonFiveGamesInARowAchievement))]
+		[KnownType(typeof(FirstGameLostAchievement))]
+		[KnownType(typeof(FirstGameWonAchievement))]
+		[KnownType(typeof(LostFiveGamesInARowAchievement))]
+		[KnownType(typeof(OneHundredGamesPlayedAchievement))]
+		[KnownType(typeof(PlayedForTheFirstTimeAchievement))]
+		[KnownType(typeof(TenGamesPlayedAchievement))]
+		[KnownType(typeof(WonFiveGamesInARowAchievement))]
 		private class AchievementList
 		{
 			private List<IAchievement> _achievements;

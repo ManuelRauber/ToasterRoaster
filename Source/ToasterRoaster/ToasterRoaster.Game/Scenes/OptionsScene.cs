@@ -30,6 +30,7 @@ namespace ToasterRoaster.Game.Scenes
 			CreateMusicVolumeOption();
 			CreateAutomaticHighscoreUploadOption();
 			CreateResetStatisticButton();
+			CreateResetAchievementsButton();
 			CreateButtons();
 		}
 
