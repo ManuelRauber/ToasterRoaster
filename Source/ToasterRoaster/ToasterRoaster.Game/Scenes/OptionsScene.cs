@@ -30,6 +30,7 @@ namespace ToasterRoaster.Game.Scenes
 			CreateMusicVolumeOption();
 			CreateAutomaticHighscoreUploadOption();
 			CreateResetStatisticButton();
+			CreateResetAchievementsButton();
 			CreateButtons();
 		}
 
@@ -48,6 +49,25 @@ namespace ToasterRoaster.Game.Scenes
 			};
 
 			resetButton.SetGridProperties(6, 0);
+			resetButton.SetValue(GridControl.ColumnSpanProperty, 2);
+			_grid.Add(resetButton);
+		}
+
+		private void CreateResetAchievementsButton()
+		{
+			var resetButton = new Button()
+			{
+				Text = "Reset achievements (debug)"
+			};
+
+			resetButton.Click += (sender, args) =>
+			{
+				var service = WaveServices.GetService<AchievementService>();
+				service.Reset();
+				WaveServices.Platform.ShowMessageBox("Achievements reset", "Your achievements have been resetted");
+			};
+
+			resetButton.SetGridProperties(7, 0);
 			resetButton.SetValue(GridControl.ColumnSpanProperty, 2);
 			_grid.Add(resetButton);
 		}
@@ -77,7 +97,7 @@ namespace ToasterRoaster.Game.Scenes
 			stackPanel.Add(okButton);
 			stackPanel.Add(cancelButton);
 			
-			stackPanel.SetGridProperties(7, 0);
+			stackPanel.SetGridProperties(8, 0);
 			_grid.Add(stackPanel);
 		}
 
@@ -160,6 +180,7 @@ namespace ToasterRoaster.Game.Scenes
 				VerticalAlignment = VerticalAlignment.Stretch,
 			};
 
+			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 			_grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
