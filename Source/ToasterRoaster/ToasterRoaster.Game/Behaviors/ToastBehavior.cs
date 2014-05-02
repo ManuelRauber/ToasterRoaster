@@ -58,18 +58,9 @@ namespace ToasterRoaster.Game.Behaviors
                     _drawMatrix[(int)((firstTouch.Position.Y - _toastRectangle.Y) * (_drawMatrix.GetLength(1) / _toastRectangle.Height)),
                         (int)((firstTouch.Position.X - _toastRectangle.X) * (_drawMatrix.GetLength(0) / _toastRectangle.Width))] = true;
                     
-                    int count = 0;
-                    for (int i = 0; i < _drawMatrix.Length; i++)
-                    {
-                        if (_drawMatrix[i / _drawMatrix.GetLength(1), i % _drawMatrix.GetLength(1)])
-                        {
-                            count++;
-                        }
-                    }
-
                     EntityManager.Remove("drawnTexture");
 
-                    bool[,] scaledTexture = BoolToTextureConverter.ScaleTexture(_drawMatrix, 100, 100);
+                    bool[,] scaledTexture = BoolToTextureConverter.ScaleTexture(_drawMatrix, Convert.ToInt32(Transform2D.Rectangle.Width * Transform2D.XScale * 0.8), Convert.ToInt32(Transform2D.Rectangle.Height * Transform2D.YScale * 0.8));
 
                     Entity drawnTexture = new Entity("drawnTexture")
                         .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(scaledTexture, this.RenderManager)))

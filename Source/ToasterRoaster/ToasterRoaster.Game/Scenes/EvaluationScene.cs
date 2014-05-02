@@ -155,7 +155,7 @@ namespace ToasterRoaster.Game.Scenes
 
         private void CreateTexturedToast(bool[,] texture, string name, string text, Vector2 position)
         {
-            bool[,] scaledTexture = BoolToTextureConverter.ScaleTexture(texture, 100, 100);
+            bool[,] scaledTexture = BoolToTextureConverter.ScaleTexture(texture, 80, 80);
 
             TextBlock textBlock = new TextBlock(name + "Text")
             {

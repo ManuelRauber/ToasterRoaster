@@ -54,8 +54,8 @@ namespace ToasterRoaster.Game.Behaviors
                 });
             _centeredToast.IsVisible = false;
 
-            bool[,] scaledGivenTexture = BoolToTextureConverter.ScaleTexture(_givenTexture, 100, 100);
-            bool[,] scaledDrawnTexture = BoolToTextureConverter.ScaleTexture(_drawnTexture, 100, 100);
+            bool[,] scaledGivenTexture = BoolToTextureConverter.ScaleTexture(_givenTexture, 80, 80);
+            bool[,] scaledDrawnTexture = BoolToTextureConverter.ScaleTexture(_drawnTexture, 80, 80);
             _centeredTexture = new Entity("centeredTexture")
                 .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(scaledGivenTexture, scaledDrawnTexture, Scene.RenderManager)))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))

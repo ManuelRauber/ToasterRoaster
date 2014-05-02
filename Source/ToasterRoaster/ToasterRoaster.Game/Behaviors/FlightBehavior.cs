@@ -42,8 +42,8 @@ namespace ToasterRoaster.Game.Behaviors
                 {
                     X = WaveServices.Platform.ScreenWidth / 2,
                     Y = WaveServices.Platform.ScreenHeight / 2,
-                    XScale = 0.2f,
-                    YScale = 0.2f,
+                    XScale = 0.5f,
+                    YScale = 0.5f,
                     DrawOrder = 0.1f,
                     Origin = Vector2.Center,
                 })

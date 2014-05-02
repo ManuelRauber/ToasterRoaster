@@ -68,8 +68,6 @@ namespace ToasterRoaster.Game.Scenes
 
             WaveServices.GetService<TextureMapService>().GivenTexture = texture;
 
-            bool[,] scaledTexture = BoolToTextureConverter.ScaleTexture(texture, 100, 100);
-
             Entity previewToast = new Entity("previewToast")
                 .AddComponent(new Sprite("Assets/Textures/toast_2D.wpk"))
                 .AddComponent(new SpriteRenderer(DefaultLayers.Alpha))
@@ -79,11 +77,13 @@ namespace ToasterRoaster.Game.Scenes
                     X = WaveServices.Platform.ScreenWidth / 2,
                     Y = WaveServices.Platform.ScreenHeight / 2,
                     DrawOrder = 0.1f,
-                    XScale = 0.2f,
-                    YScale = 0.2f,
+                    XScale = 0.5f,
+                    YScale = 0.5f,
                     Origin = Vector2.Center,
                 });
             EntityManager.Add(previewToast);
+            
+            bool[,] scaledTexture = BoolToTextureConverter.ScaleTexture(texture, 200, 200);
 
             Entity previewTexture = new Entity("previewTexture")
                 .AddComponent(new Sprite(BoolToTextureConverter.TxdFromBoolArray(scaledTexture, this.RenderManager)))
