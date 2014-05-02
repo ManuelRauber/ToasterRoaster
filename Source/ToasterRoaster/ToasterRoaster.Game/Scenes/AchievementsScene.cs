@@ -18,7 +18,9 @@ namespace ToasterRoaster.Game.Scenes
 
 
 		protected override void CreateScene()
-		{
+        {
+            EntityManager.Add(CreateEntity.Background());
+
 			_achievements = WaveServices.GetService<AchievementService>().Achievements;
 
 			CreateUI();

@@ -42,6 +42,7 @@
     <Compile Include="Common\BoardComparer.cs" />
     <Compile Include="Common\BoolToTextureConverter.cs" />
     <Compile Include="Common\Configuration.cs" />
+    <Compile Include="Common\CreateEntity.cs" />
     <Compile Include="Common\UIExtensions.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

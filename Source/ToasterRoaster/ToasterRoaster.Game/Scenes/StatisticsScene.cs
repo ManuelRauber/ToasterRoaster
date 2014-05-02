@@ -16,7 +16,8 @@ namespace ToasterRoaster.Game.Scenes
 		private Dictionary<string, object> _statisticMap;
 
 		protected override void CreateScene()
-		{
+        {
+            EntityManager.Add(CreateEntity.Background());
 			CreateStatisticMap();
 			CreateUI();
 		}

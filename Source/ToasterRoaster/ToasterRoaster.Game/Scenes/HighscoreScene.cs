@@ -15,7 +15,9 @@ namespace ToasterRoaster.Game.Scenes
 		private Grid _grid;
 
 		protected override void CreateScene()
-		{
+        {
+            EntityManager.Add(CreateEntity.Background());
+
 			CreateUI();
 
 			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Highscore");

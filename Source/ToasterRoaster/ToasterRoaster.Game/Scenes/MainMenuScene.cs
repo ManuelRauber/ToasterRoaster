@@ -1,8 +1,10 @@
 ﻿using System;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
+using WaveEngine.Components.Graphics2D;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
+using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
 using WaveEngine.Framework.UI;
 
@@ -14,6 +16,8 @@ namespace ToasterRoaster.Game.Scenes
 
 		protected override void CreateScene()
 		{
+            EntityManager.Add(CreateEntity.Background());
+
 			CreateUI();
 
 			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Main Menu");

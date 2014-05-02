@@ -15,7 +15,7 @@ namespace ToasterRoaster.Game.Scenes
 
     protected override void CreateScene()
     {
-	  //  RenderManager.DebugLines = true;
+        EntityManager.Add(CreateEntity.Background());
 
       CreateGrid();
       CreateHeader();

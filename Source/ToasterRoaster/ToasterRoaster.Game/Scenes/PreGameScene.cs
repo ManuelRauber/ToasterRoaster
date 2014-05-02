@@ -26,7 +26,7 @@ namespace ToasterRoaster.Game.Scenes
 	        WaveServices.GetService<StatisticsService>().TotalGamesPlayed++;
 					WaveServices.GetService<AchievementService>().Steps(GameStep.GameStarted);
 
-            RenderManager.BackgroundColor = Color.YellowGreen;
+            EntityManager.Add(CreateEntity.Background());
 
             TextBlock levelText = new TextBlock("levelText")
             {

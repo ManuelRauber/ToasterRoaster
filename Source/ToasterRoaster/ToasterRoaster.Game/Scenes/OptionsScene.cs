@@ -16,7 +16,9 @@ namespace ToasterRoaster.Game.Scenes
 		private CheckBox _automaticHighscoreUploadCheckBox;
 
 		protected override void CreateScene()
-		{
+        {
+            EntityManager.Add(CreateEntity.Background());
+
 			CreateUI();
 
 			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Options");
