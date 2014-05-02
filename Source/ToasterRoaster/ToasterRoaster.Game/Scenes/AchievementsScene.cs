@@ -49,6 +49,7 @@ namespace ToasterRoaster.Game.Scenes
 				Text = String.Format("{0}\r\n({1})", achievement.Title, achievement.Description),
 				TextAlignment = TextAlignment.Left,
 				HorizontalAlignment = HorizontalAlignment.Left,
+				Height = 55
 			};
 
 			titleText.SetGridProperties(row, 0);
@@ -58,6 +59,7 @@ namespace ToasterRoaster.Game.Scenes
 				Text = achievement.PercentageCompleted >= 100 ? "Completed" : "Not completed",
 				TextAlignment = TextAlignment.Right,
 				HorizontalAlignment = HorizontalAlignment.Right,
+				Width = 200
 			};
 
 			completedText.SetGridProperties(row, 1);
