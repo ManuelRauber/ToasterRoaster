@@ -137,6 +137,8 @@
     <Content Include="Assets\Textures\toast_2D.wpk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Assets\Background\BackgroundMenu.wpk" />
+    <None Include="Assets\Background\BackgroundMenu2.wpk" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
