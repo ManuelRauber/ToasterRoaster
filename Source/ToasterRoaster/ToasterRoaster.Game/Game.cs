@@ -21,6 +21,7 @@ namespace ToasterRoaster.Game
 			WaveServices.RegisterService(new StatisticsService());
 			WaveServices.RegisterService(new AchievementService());
             WaveServices.RegisterService(new SoundService());
+			WaveServices.RegisterService(new AchievementDispatcher());
 			
 			WaveServices.GetService<HighscoreServices>().RegisterDefaultServices();
 

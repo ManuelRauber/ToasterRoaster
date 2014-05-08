@@ -37,6 +37,7 @@
     <Compile Include="Behaviors\PreGameSceneBehavior.cs" />
     <Compile Include="Behaviors\ToastBehavior.cs" />
     <Compile Include="Behaviors\ToasterBehavior.cs" />
+    <Compile Include="Common\AchievementDispatcher.cs" />
     <Compile Include="Common\BackgroundMusicPlayer.cs" />
     <Compile Include="Common\BoardComparer.cs" />
     <Compile Include="Common\BoolToTextureConverter.cs" />
