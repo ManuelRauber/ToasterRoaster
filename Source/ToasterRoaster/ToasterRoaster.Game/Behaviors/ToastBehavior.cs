@@ -36,10 +36,10 @@ namespace ToasterRoaster.Game.Behaviors
         {
             float width = Transform2D.Rectangle.Width * Transform2D.XScale;
             float height = Transform2D.Rectangle.Height * Transform2D.YScale;
-            _toastRectangle = new RectangleF(Transform2D.X - (width * Transform2D.Origin.X),
-                Transform2D.Y - (height * Transform2D.Origin.Y),
-                width,
-                height);
+            _toastRectangle = new RectangleF(Transform2D.X - (width * 0.8f * Transform2D.Origin.X),
+                Transform2D.Y - (height * 0.8f * Transform2D.Origin.Y),
+                width * 0.8f,
+                height * 0.8f);
 
             _drawMatrix = new bool[WaveServices.GetService<LevelInformationService>().TextureSize, WaveServices.GetService<LevelInformationService>().TextureSize];
             WaveServices.GetService<TextureMapService>().DrawnTexture = _drawMatrix;

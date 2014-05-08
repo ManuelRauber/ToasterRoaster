@@ -41,17 +41,17 @@ namespace ToasterRoaster.Game.Common
 				return;
 			}
 
-			WaveServices.MusicPlayer.Play(GetNextTitle());
+            //WaveServices.MusicPlayer.Play(GetNextTitle());
 		}
 
 		private void PreloadBackgroundMusic()
 		{
 			_musicList = new List<MusicInfo>()
 			{
-				new MusicInfo("Assets/Music/BushwickTarantella.mp3"),
-				new MusicInfo("Assets/Music/FunInABottle.mp3"),
-				new MusicInfo("Assets/Music/GaslampFunworks.mp3"),
-				new MusicInfo("Assets/Music/MonkeysSpinningMonkeys.mp3"),
+                //new MusicInfo("Assets/Music/BushwickTarantella.mp3"),
+                //new MusicInfo("Assets/Music/FunInABottle.mp3"),
+                //new MusicInfo("Assets/Music/GaslampFunworks.mp3"),
+                //new MusicInfo("Assets/Music/MonkeysSpinningMonkeys.mp3"),
 			};
 		}
 
@@ -75,7 +75,7 @@ namespace ToasterRoaster.Game.Common
 				return;
 			}
 
-			WaveServices.MusicPlayer.Play(GetNextTitle());
+			//WaveServices.MusicPlayer.Play(GetNextTitle());
 		}
 	}
 }
