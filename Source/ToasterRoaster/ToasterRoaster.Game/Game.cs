@@ -4,6 +4,7 @@ using ToasterRoaster.Game.Services;
 using ToasterRoaster.Game.Services.Highscore;
 using WaveEngine.Common;
 using WaveEngine.Framework.Services;
+using WaveEngine.Framework.Sound;
 
 namespace ToasterRoaster.Game
 {
@@ -19,6 +20,7 @@ namespace ToasterRoaster.Game
 			WaveServices.RegisterService(new HighscoreServices());
 			WaveServices.RegisterService(new StatisticsService());
 			WaveServices.RegisterService(new AchievementService());
+            WaveServices.RegisterService(new SoundService());
 			
 			WaveServices.GetService<HighscoreServices>().RegisterDefaultServices();
 

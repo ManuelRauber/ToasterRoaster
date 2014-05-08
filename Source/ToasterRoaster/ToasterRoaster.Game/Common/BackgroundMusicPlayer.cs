@@ -48,10 +48,10 @@ namespace ToasterRoaster.Game.Common
 		{
 			_musicList = new List<MusicInfo>()
 			{
-				new MusicInfo("Assets/Music/BushwickTarantella.mp3"),
-				new MusicInfo("Assets/Music/FunInABottle.mp3"),
-				new MusicInfo("Assets/Music/GaslampFunworks.mp3"),
-				new MusicInfo("Assets/Music/MonkeysSpinningMonkeys.mp3"),
+				new MusicInfo("Assets/Music/backgroundMusic1.mp3"),
+				new MusicInfo("Assets/Music/backgroundMusic2.mp3"),
+				new MusicInfo("Assets/Music/backgroundMusic3.mp3"),
+				new MusicInfo("Assets/Music/backgroundMusic4.mp3"),
 			};
 		}
 

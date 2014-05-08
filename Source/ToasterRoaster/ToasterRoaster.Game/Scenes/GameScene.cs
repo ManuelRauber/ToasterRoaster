@@ -49,12 +49,24 @@ namespace ToasterRoaster.Game.Scenes
             };
             EntityManager.Add(toasterPosition);
 
+            CreateKitchen();
             CreateLight();
             CreateCamera();
             CreateToaster();
 			//CreatePlate();
 
 			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "In-game");
+        }
+
+        private void CreateKitchen()
+        {
+            var kitchen = new Entity("kitchen")
+                .AddComponent(new Model("Assets/Models/küche.wpk"))
+                .AddComponent(new MaterialsMap(new BasicMaterial(Color.Brown) { LightingEnabled = true, DiffuseColor = Color.White, }))
+                .AddComponent(new Transform3D())
+                .AddComponent(new ModelRenderer());
+
+            EntityManager.Add(kitchen);
         }
 
         private void CreatePlate()

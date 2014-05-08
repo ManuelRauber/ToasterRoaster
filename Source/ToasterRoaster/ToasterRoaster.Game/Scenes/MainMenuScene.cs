@@ -1,11 +1,13 @@
 ﻿using System;
 using ToasterRoaster.Game.Common;
 using ToasterRoaster.Game.Services;
+using WaveEngine.Common.Media;
 using WaveEngine.Components.Graphics2D;
 using WaveEngine.Components.UI;
 using WaveEngine.Framework;
 using WaveEngine.Framework.Graphics;
 using WaveEngine.Framework.Services;
+using WaveEngine.Framework.Sound;
 using WaveEngine.Framework.UI;
 
 namespace ToasterRoaster.Game.Scenes
@@ -18,10 +20,20 @@ namespace ToasterRoaster.Game.Scenes
 		{
             EntityManager.Add(CreateEntity.Background());
 
+            InitializeSoundbank();
+
 			CreateUI();
 
 			WaveServices.GetService<AnalyticsService>().TagEvent("Page opened", "Page", "Main Menu");
 		}
+
+        private void InitializeSoundbank()
+        {
+            SoundBank soundBank = new SoundBank(Assets);
+            WaveServices.SoundPlayer.RegisterSoundBank(soundBank);
+
+            soundBank.Add(WaveServices.GetService<SoundService>().Sound["buttonClick"]);
+        }
 
 		// ReSharper disable once InconsistentNaming
 		private void CreateUI()
@@ -124,7 +136,8 @@ namespace ToasterRoaster.Game.Scenes
 		#region Events
 
 		private static void OptionsButtonClicked(object sender, EventArgs e)
-		{
+        {
+            WaveServices.SoundPlayer.Play(WaveServices.GetService<SoundService>().Sound["buttonClick"]);
 			SceneManager.Instance.To<OptionsScene>();
 		}
 

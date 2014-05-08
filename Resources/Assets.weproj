@@ -6,6 +6,27 @@
     <Profile Name="WindowsPhone" Platform="WP" LowQualityCompressionFormat="DXT1" HighQualityCompressionFormat="DXT5" />
   </Profiles>
   <Assets>
+    <Asset Path="Backgrounds\BackgroundMenu.png">
+      <ExportProperties>
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Android" Platform="Android" Generate="True" ZipCompress="False" />
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Windows" Platform="Windows" Generate="True" ZipCompress="False" />
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="WindowsPhone" Platform="WP" Generate="True" ZipCompress="False" />
+      </ExportProperties>
+    </Asset>
+    <Asset Path="Backgrounds\BackgroundMenu2.png">
+      <ExportProperties>
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Android" Platform="Android" Generate="True" ZipCompress="False" />
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Windows" Platform="Windows" Generate="True" ZipCompress="False" />
+        <Export ScalingType="Percentage" ScaledPercentage="100" GenerateMipmaps="False" PremultipliedAlpha="True" AntialiasType="Smooth" OutputFormat="Color32Bit" Profile="WaveEditor.Core.Model.PlatformProfile" Name="WindowsPhone" Platform="WP" Generate="True" ZipCompress="False" />
+      </ExportProperties>
+    </Asset>
+    <Asset Path="Models\küche.fbx">
+      <ExportProperties>
+        <Export SwapWindingOrder="True" GenerateCollisionInfo="False" GenerateTangentSpace="True" FullBoneWeights="True" ExportAnimations="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ClipListViewModel xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;&#xD;&#xA;  &lt;Clips /&gt;&#xD;&#xA;  &lt;ExportAnimations&gt;false&lt;/ExportAnimations&gt;&#xD;&#xA;&lt;/ClipListViewModel&gt;" HasAnimations="False" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Android" Platform="Android" Generate="True" ZipCompress="False" />
+        <Export SwapWindingOrder="True" GenerateCollisionInfo="False" GenerateTangentSpace="True" FullBoneWeights="True" ExportAnimations="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ClipListViewModel xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;&#xD;&#xA;  &lt;Clips /&gt;&#xD;&#xA;  &lt;ExportAnimations&gt;false&lt;/ExportAnimations&gt;&#xD;&#xA;&lt;/ClipListViewModel&gt;" HasAnimations="False" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Windows" Platform="Windows" Generate="True" ZipCompress="False" />
+        <Export SwapWindingOrder="True" GenerateCollisionInfo="False" GenerateTangentSpace="True" FullBoneWeights="True" ExportAnimations="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ClipListViewModel xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;&#xD;&#xA;  &lt;Clips /&gt;&#xD;&#xA;  &lt;ExportAnimations&gt;false&lt;/ExportAnimations&gt;&#xD;&#xA;&lt;/ClipListViewModel&gt;" HasAnimations="False" Profile="WaveEditor.Core.Model.PlatformProfile" Name="WindowsPhone" Platform="WP" Generate="True" ZipCompress="False" />
+      </ExportProperties>
+    </Asset>
     <Asset Path="Models\plate_template.fbx">
       <ExportProperties>
         <Export SwapWindingOrder="False" GenerateCollisionInfo="False" GenerateTangentSpace="False" FullBoneWeights="False" ExportAnimations="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&#xD;&#xA;&lt;ClipListViewModel xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;&#xD;&#xA;  &lt;Clips /&gt;&#xD;&#xA;  &lt;ExportAnimations&gt;false&lt;/ExportAnimations&gt;&#xD;&#xA;&lt;/ClipListViewModel&gt;" HasAnimations="False" Profile="WaveEditor.Core.Model.PlatformProfile" Name="Android" Platform="Android" Generate="False" ZipCompress="False" ExportType="WaveEngine.Components.Graphics3D.InternalSkinnedModel" />

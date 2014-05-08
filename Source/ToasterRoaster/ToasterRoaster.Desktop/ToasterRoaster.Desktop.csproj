@@ -89,6 +89,9 @@
     <Content Include="Assets\Background\BackgroundMenu2.wpk">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Models\küche.wpk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToasterRoaster.Game\ToasterRoaster.Game.Desktop.csproj">
